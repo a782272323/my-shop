@@ -1,7 +1,6 @@
 package learn.lhb.my.shop.web.admin.controller;
 
 import learn.lhb.my.shop.commons.constant.ConstantUtils;
-import learn.lhb.my.shop.domain.UserDomain;
 import learn.lhb.my.shop.web.admin.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,9 +31,7 @@ public class LoginController {
     @GetMapping(value = "login")
     public String login(String email,String password,Model model)   {
         // TODO 最好做个token 验证
-//        UserEntity userEntity = userService.adminLogin(email,password);
-//        model.addAttribute("userEntity",userEntity);
-        model.addAttribute("message","登录失败 !");
+
         return "login";
     }
 
@@ -50,23 +47,8 @@ public class LoginController {
      */
     @PostMapping(value = "login")
     public String login(String email, String password, Model model, HttpServletRequest request, HttpServletResponse response)   {
-        UserDomain userDomain = null;
-        userDomain = userService.adminLogin(email,password);
-        if (userDomain == null) {
-            // 登录失败
-            // TODO 登录失败弹窗提示有bug，可以参考微服务的sso服务的代码逻辑
-            logger.error("登录失败");
-            model.addAttribute("message","失败！");
-//            request.setAttribute("message","用户名或者密码错误!");
-            //重新登录
-            return "redirect:/login";
 
-        } else {
-            // 登录成功
-            //登录信息存如会话
-            request.getSession().setAttribute(ConstantUtils.SESSION_USER,userDomain);
-            return "redirect:/main";
-        }
+      return null;
 
     // TODO 做完这个项目后，把maven笔记完善一下
     }

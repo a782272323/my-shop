@@ -1,8 +1,6 @@
 package learn.lhb.my.shop.web.admin.service;
 
 
-import learn.lhb.my.shop.domain.UserDomain;
-
 /**
  * 用户(后台管理人员)
  *
@@ -12,5 +10,5 @@ import learn.lhb.my.shop.domain.UserDomain;
  */
 public interface UserService {
 
-    public UserDomain adminLogin(String email, String password);
+
 }
