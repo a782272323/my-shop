@@ -26,10 +26,10 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         TbUserDomain tbUserDomain = (TbUserDomain) request.getSession().getAttribute(ConstantUtils.SESSION_USER);
 
-        // 未登录
-        if (tbUserDomain == null)   {
-            response.sendRedirect("/login");
-        }
+//        // 未登录
+//        if (tbUserDomain == null)   {
+//            response.sendRedirect("/login");
+//        }
 
         // return 为false下面的方法就进不去了
         return true;

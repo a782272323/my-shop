@@ -21,7 +21,7 @@ public interface TbUserDao {
      *
      * @return
      */
-    public List<TbUserDao> selectAll();
+    public List<TbUserDomain> selectAll();
 
     /**
      * 添加用户

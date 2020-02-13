@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="learn.lhb.my.shop.admin.dao.TbUserdao">
+<mapper namespace="learn.lhb.my.shop.admin.dao.TbUserDao">
     <!-- TODO 把mybatis的配置那些还有语法 做个笔记 -->
 
     <!-- 可重复引用 -->
@@ -85,7 +85,7 @@
             a.username LIKE CONCAT('%',#{username},'%')
     </select>
 
-    <select id="getByEmail" resultType="TbUserDomain">
+    <select id="getByEmail" resultType="TbUserDomain" parameterType="String">
         SELECT
             <include refid="tbUserColumns"/>
         FROM

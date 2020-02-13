@@ -75,6 +75,13 @@
                 <artifactId>spring-jdbc</artifactId>
                 <version>${spring-jdbc.version}</version>
             </dependency>
+            <!-- 单元测试 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${spring-boot-common.version}</version>
+                <scope>test</scope>
+            </dependency>
             <!-- Spring Boot End -->
 
             <!-- 单元测试 -->
@@ -252,9 +259,6 @@
                 <excludes>
                     <exclude>**/*.java</exclude>
                 </excludes>
-                <includes>
-                    <include>**/banner.txt</include>
-                </includes>
             </resource>
             <resource>
                 <directory>src/main/resources</directory>

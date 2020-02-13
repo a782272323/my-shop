@@ -77,4 +77,6 @@ public class LoginController {
         return login();
 
     }
+
+    // TODO springboot 整合单元测试做一个笔记 ,spring 的不适用
 }

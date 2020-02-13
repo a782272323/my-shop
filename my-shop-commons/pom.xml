@@ -44,7 +44,9 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
         </dependency>
+
         <!-- Spring Boot End -->
+
         <!-- 通用的工具类依赖 -->
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -52,10 +54,10 @@
         </dependency>
 
         <!-- 单元测试 -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>junit</groupId>-->
+<!--            <artifactId>junit</artifactId>-->
+<!--        </dependency>-->
 
         <!-- Log Begin -->
 

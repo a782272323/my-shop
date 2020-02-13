@@ -31,7 +31,12 @@
         <!-- Project End -->
 
         <!-- Spring Boot Begin -->
-
+        <!-- 单元测试 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
         <!-- Spring Boot End -->
 
         <!-- 使用非正规HTML格式 -->
@@ -64,21 +69,7 @@
                     <mainClass>learn.lhb.my.shop.web.admin.WebAdminApplication</mainClass>
                 </configuration>
             </plugin>
-
         </plugins>
-
-        <!-- 配置静态资源 -->
-<!--        <resources>-->
-<!--            <resource>-->
-<!--                <directory>src/main/resources</directory>-->
-<!--                <includes>-->
-<!--                    <include>**/*.mapper</include>-->
-<!--                    <include>**/*.yml</include>-->
-<!--                    <include>**/*.html</include>-->
-<!--                    <include>**/banner.txt</include>-->
-<!--                </includes>-->
-<!--            </resource>-->
-<!--        </resources>-->
     </build>
 
 </project>
