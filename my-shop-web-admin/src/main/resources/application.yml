@@ -27,7 +27,7 @@ spring:
 #mybatis
 mybatis:
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: learn.lhb.my.shop.admin.entity
+  type-aliases-package: learn.lhb.my.shop.domain
 
 server:
   port: 1234

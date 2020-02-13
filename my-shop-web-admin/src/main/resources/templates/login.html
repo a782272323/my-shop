@@ -32,16 +32,22 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="#"><b>我的商场</b></a>
+        <a href="#"><b>我的商城</b></a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">欢迎管理员登录</p>
 
-<!--        <th:block th:if="${userDomain == null}">-->
+
+        <th:block th:if="${tbUserDomain != null}"><!-- 如果 cookie 有值 -->
+            <p class="login-box-msg">欢迎 <span th:text="${tbUserDomain.getUsername}"></span> 登录</p>
+        </th:block>
+
+        <th:block th:if="${tbUserDomain == null}"><!-- 如果为空，则表示未登录 -->
+            <p class="login-box-msg">欢迎管理员登录</p>
+
             <form action="/login" method="post">
                 <!-- 登录失败弹窗 -->
-                <div class="alert alert-danger alert-dismissable" th:if="${message != null}">
+                <div class="alert alert-danger alert-dismissable" th:if="${message != null}"> <!-- 错误信息 -->
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
                     <span th:text="${message}"></span>
                 </div>
@@ -68,7 +74,7 @@
                     <!-- /.col -->
                 </div>
             </form>
-<!--        </th:block>-->
+        </th:block>
 
 
 <!--        <div class="social-auth-links text-center">-->

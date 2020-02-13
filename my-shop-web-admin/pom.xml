@@ -66,6 +66,19 @@
             </plugin>
 
         </plugins>
+
+        <!-- 配置静态资源 -->
+<!--        <resources>-->
+<!--            <resource>-->
+<!--                <directory>src/main/resources</directory>-->
+<!--                <includes>-->
+<!--                    <include>**/*.mapper</include>-->
+<!--                    <include>**/*.yml</include>-->
+<!--                    <include>**/*.html</include>-->
+<!--                    <include>**/banner.txt</include>-->
+<!--                </includes>-->
+<!--            </resource>-->
+<!--        </resources>-->
     </build>
 
 </project>
