@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>my-shop-web-api</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <name>my-shop-web-api</name>
     <description></description>
