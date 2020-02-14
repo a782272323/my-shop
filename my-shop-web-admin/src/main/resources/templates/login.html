@@ -38,9 +38,9 @@
     <div class="login-box-body">
 
 
-        <th:block th:if="${tbUserDomain != null}"><!-- 如果 cookie 有值 -->
-            <p class="login-box-msg">欢迎 <span th:text="${tbUserDomain.getUsername}"></span> 登录</p>
-        </th:block>
+<!--        <th:block th:if="${tbUserDomain != null}">&lt;!&ndash; 如果 cookie 有值 &ndash;&gt;-->
+<!--            <p class="login-box-msg">欢迎 <span th:text="${tbUserDomain.getUsername}"></span> 登录</p>-->
+<!--        </th:block>-->
 
         <th:block th:if="${tbUserDomain == null}"><!-- 如果为空，则表示未登录 -->
             <p class="login-box-msg">欢迎管理员登录</p>

@@ -62,6 +62,12 @@
         <!-- Log Begin -->
 
         <!-- Log End -->
+
+        <!-- json转换，jackson -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
     </dependencies>
 
 

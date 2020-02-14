@@ -1,6 +1,7 @@
 package learn.lhb.my.shop.web.admin.dao;
 
 import learn.lhb.my.shop.domain.TbUserDomain;
+import org.apache.ibatis.annotations.Mapper;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.stereotype.Repository;
 
@@ -13,7 +14,7 @@ import java.util.Map;
  * @time 22:55
  */
 @Repository
-@MapperScan
+@Mapper
 public interface TbUserDao {
 
     /**
@@ -60,5 +61,5 @@ public interface TbUserDao {
      * @param id
      * @return
      */
-    TbUserDomain getById(String id);
+    TbUserDomain getById(Long id);
 }

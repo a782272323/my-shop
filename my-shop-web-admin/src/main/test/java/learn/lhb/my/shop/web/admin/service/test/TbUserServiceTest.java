@@ -54,4 +54,16 @@ public class TbUserServiceTest {
         }
     }
 
+    @Test
+    public void getById()   {
+        Long id = Long.valueOf(37);
+        TbUserDomain tbUserDomain = tbUserDao.getById(id);
+        System.out.println(tbUserDomain.getUsername());
+    }
+
+    @Test
+    public void delete()    {
+        tbUserDao.delete(Long.valueOf(1));
+    }
+
 }

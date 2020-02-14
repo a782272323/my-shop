@@ -1,6 +1,7 @@
 package learn.lhb.my.shop.web.admin.controller;
 
 import learn.lhb.my.shop.commons.constant.ConstantUtils;
+import learn.lhb.my.shop.commons.utils.CookieUtils;
 import learn.lhb.my.shop.domain.TbUserDomain;
 import learn.lhb.my.shop.web.admin.service.TbUserService;
 import org.slf4j.Logger;
@@ -9,11 +10,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.UUID;
 
 
 /**
@@ -38,6 +44,7 @@ public class LoginController {
     }
 
 
+
     /**
      * TODO 登录业务(暂时只有邮件登录，手机登录往后看情况改)
      * @param email
@@ -51,17 +58,21 @@ public class LoginController {
     public String login(
             @RequestParam(required = true,value = "email") String email,
             @RequestParam(required = true,value = "password") String password,
-            HttpServletRequest request, HttpServletResponse response,Model model)   {
+            HttpServletRequest request, HttpServletResponse response, Model model,
+            RedirectAttributes redirectAttributes)   {
 
         TbUserDomain tbUserDomain = tbUserService.login(email, password);
 
+        // TODO 登录业务有bug
         // 登录失败
         if (tbUserDomain == null) {
-            model.addAttribute(ConstantUtils.WEB_MESSAGE,ConstantUtils.MESSAGE_ERROR);
-            return login();
+            redirectAttributes.addFlashAttribute(ConstantUtils.WEB_MESSAGE,ConstantUtils.MESSAGE_ERROR);
+            return "redirect:/login";
         }   else {  // 登录成功
             // 将登录信息放入会话
+
             request.getSession().setAttribute(ConstantUtils.SESSION_USER,tbUserDomain);
+
             //重定向到首页
             return "redirect:/main";
         }
@@ -70,12 +81,15 @@ public class LoginController {
     // TODO 做完这个项目后，把maven笔记完善一下
     }
 
+//    @ModelAttribute
+//    public TbUserDomain tbUserDomain()  {
+//
+//    }
 
     @GetMapping(value = "logout")
     public String logout(HttpServletRequest request)  {
         request.getSession().invalidate();
-        return login();
-
+        return "login";
     }
 
     // TODO springboot 整合单元测试做一个笔记 ,spring 的不适用

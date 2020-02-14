@@ -5,6 +5,9 @@ spring:
     encoding: UTF-8
     servlet:
       content-type: text/html
+    prefix: classpath:/templates/
+    suffix: .html
+  #spring MVC
   mvc:
     static-path-pattern: /**
   # 资源文件配置

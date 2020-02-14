@@ -11,8 +11,8 @@ import org.springframework.context.annotation.ComponentScan;
  * @date 2020/2/13.
  * @time 16:34
  */
-@SpringBootApplication(scanBasePackages = "learn.lhb.my.shop")
-@MapperScan(value = "learn.lhb.my.shop.web.admin.dao") //扫描 dao
+@SpringBootApplication
+//@MapperScan(value = "learn.lhb.my.shop.web.admin.dao") //扫描 dao
 @EntityScan(basePackages = "learn.lhb.my.shop")
 @ComponentScan(basePackages = "learn.lhb.my.shop")
 public class WebAdminApplication {

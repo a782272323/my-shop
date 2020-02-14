@@ -26,7 +26,8 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         TbUserDomain tbUserDomain = (TbUserDomain) request.getSession().getAttribute(ConstantUtils.SESSION_USER);
 
-//        // 未登录
+        // TODO 登录拦截那些逻辑未解决
+        // 未登录
 //        if (tbUserDomain == null)   {
 //            response.sendRedirect("/login");
 //        }
@@ -38,6 +39,15 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
 
+
+//        //以 login 结尾的请求
+//        // TODO model,modelMap,modelAndView 用法补完全一点
+//        if (modelAndView.getViewName().endsWith("login"))   {
+//            TbUserDomain tbUserDomain = (TbUserDomain) request.getSession().getAttribute(ConstantUtils.SESSION_USER);
+//            if (tbUserDomain != null) {
+//                response.sendRedirect("/main");
+//            }
+//        }
     }
 
     @Override
