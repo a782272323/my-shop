@@ -38,7 +38,7 @@
         <mybatis.version>2.1.0</mybatis.version><!-- mybatis 版本号 -->
         <commons-lang3.version>3.5</commons-lang3.version><!-- 通用的工具类 版本号 -->
 <!--        <mybatis.version>3.4.6</mybatis.version>&lt;!&ndash; mybatis 版本号 &ndash;&gt;-->
-        <jackson.version>2.9.6</jackson.version><!-- json转换，jackson版本 -->
+        <jackson.version>2.9.10.1</jackson.version><!-- json转换，jackson版本 -->
 
     </properties>
 
