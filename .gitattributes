@@ -1,3 +1,8 @@
-*.js linguist-language=java
-*.css linguist-language=java
-*.html linguist-language=java
+
+# Windows-specific files that require CRLF:
+*.bat       eol=crlf
+*.txt       eol=crlf
+
+# Unix-specific files that require LF:
+*.java      eol=lf
+*.sh        eol=lf
