@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.DigestUtils;
 
 import java.util.List;
@@ -21,7 +22,7 @@ import java.util.List;
  * @date 2020/2/14.
  * @time 01:48
  */
-//@RunWith(Runner.class) TODO 我也不知道为啥错，到时一起整理到 springboot 的单元测试笔记里
+@RunWith(SpringRunner.class) //TODO 整理到 springboot 的单元测试笔记里,报错原因，SpringRunner.class正常 Runner.class 错误
 @SpringBootTest(classes = WebAdminApplication.class)
 public class TbUserServiceTest {
     public static final Logger logger = LoggerFactory.getLogger(TbUserServiceTest.class);
@@ -48,7 +49,7 @@ public class TbUserServiceTest {
 
     @Test
     public void testSelectAll() {
-        List<TbUserDomain> tbUsers = tbUserDao.selectAll();
+        List<TbUserDomain> tbUsers = tbUserService.selectAll();
         for (TbUserDomain tbUser : tbUsers) {
             System.out.println(tbUser.getUsername());
         }

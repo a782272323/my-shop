@@ -27,7 +27,7 @@ public class TbUserServiceImpl implements TbUserService {
 
     @Override
     public List<TbUserDomain> selectAll() {
-        return null;
+        return tbUserDao.selectAll();
     }
 
     @Override

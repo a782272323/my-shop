@@ -36,6 +36,12 @@ public class LoginController {
     private TbUserService tbUserService;
 
 
+    @GetMapping("test1")
+    public String test1()   {
+        return "test1";
+    }
+
+
     /**
      * 跳转登录页
      * @return
