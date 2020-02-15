@@ -9,7 +9,7 @@ spring:
     suffix: .html
   #spring MVC
   mvc:
-    static-path-pattern: /**
+    static-path-pattern: /static/** # 告诉框架去哪里找静态资源的配置
   # 资源文件配置
   resources:
     static-locations: classpath:/static

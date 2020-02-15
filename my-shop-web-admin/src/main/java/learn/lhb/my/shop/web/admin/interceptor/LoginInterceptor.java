@@ -26,14 +26,22 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         TbUserDomain tbUserDomain = (TbUserDomain) request.getSession().getAttribute(ConstantUtils.SESSION_USER);
 
-        // TODO 登录拦截那些逻辑未解决
+        // TODO 登录拦截那些逻辑未解决,要先登录一次才能拦截，若把会话全清了，或者新的浏览器打开，会进入死循环
         // 未登录
-//        if (tbUserDomain == null)   {
-//            response.sendRedirect("/login");
-//        }
+        if (tbUserDomain == null)   {
+//            tbUserDomain.setEmail("x");
+            response.sendRedirect("/login");
+        }
 
         // return 为false下面的方法就进不去了
         return true;
+
+//        if (tbUserDomain == null | tbUserDomain.equals("")) {
+//            request.getRequestDispatcher("/login.html").forward(request,response);
+//            return false;
+//        } else {
+//            return true;
+//        }
     }
 
     @Override

@@ -5,6 +5,7 @@ import learn.lhb.my.shop.domain.TbUserDomain;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @time 18:16
  */
 @Controller
+//@RequestMapping(value = "v1.0")   TODO 加了访问 静态资源失效，bug未解决
 public class MainController {
 
 //    @GetMapping(value = "main")

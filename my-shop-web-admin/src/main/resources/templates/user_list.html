@@ -1,9 +1,8 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<!--<html xmlns:th="http://www.thymeleaf.org">-->
 <head>
     <th:block th:include="includes/header :: header"></th:block>
-    <title>我的商城 | 控制面板</title>
+    <title>我的商场 | 用户列表</title>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -19,12 +18,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                控制面板
-                <small></small><!-- 子标题，有再加 -->
+                用户管理
+                <small>用户列表</small><!-- 子标题，有再加 -->
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
-                <li class="active">控制面板</li>
+                <li><a href="/main"><i class="fa fa-dashboard"></i> 首页</a></li>
+                <li class="active">用户管理</li>
             </ol>
         </section>
 
@@ -41,5 +40,6 @@
 
 <!-- 引入通用的script -->
 <th:block th:include="includes/footer :: footer"></th:block>
+
 </body>
 </html>
