@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -33,11 +34,23 @@ public class TbUserController {
     private TbUserService tbUserService;
 
     /**
+     * 把实体类 tbUserDomain 放到model
+     * @param id
+     * @return
+     */
+    @ModelAttribute
+    public TbUserDomain getTbUser(Long id) {
+        TbUserDomain tbUserDomain = new TbUserDomain();
+        return tbUserDomain;
+    }
+
+    /**
      * 跳转到用户列表页
      * @return
      */
     @GetMapping("list")
     public String list(Model model)    {
+
         List<TbUserDomain> tbUserDomains = tbUserService.selectAll();
         model.addAttribute("tbUserDomains",tbUserDomains);
         // TODO for 和 foreach做个笔记,list里面的遍历也做个笔记
@@ -52,10 +65,14 @@ public class TbUserController {
      * @return
      */
     @GetMapping("form")
-    public String form()    {
+    public String form(Model model)    {
+
+//        TbUserDomain tbUserDomain = new TbUserDomain();
+//        model.addAttribute(ConstantUtils.SESSION_USER,tbUserDomain);
         return "user_form";
     }
 
+    // TODO 看千峰的springMVC的笔记，把我的笔记有关 model补全
     /**
      * 保存用户信息(包括新增和编辑)
      * @param tbUserDomain
