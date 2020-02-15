@@ -28,12 +28,12 @@
     <!-- 添加 -->
     <insert id="insert">
         INSERT INTO tb_user (
-            'username',
-            'password',
-            'phone',
-            'email',
-            'created',
-            'updated'
+            username,
+            password,
+            phone,
+            email,
+            created,
+            updated
         )
         VALUES
             (
@@ -42,7 +42,7 @@
                 #{phone},
                 #{email},
                 #{created},
-                #{update}
+                #{updated}
             )
     </insert>
 

@@ -15,6 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.DigestUtils;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -65,6 +66,18 @@ public class TbUserServiceTest {
     @Test
     public void delete()    {
         tbUserDao.delete(Long.valueOf(1));
+    }
+
+    @Test
+    public void testsave()  {
+        TbUserDomain tbUserDomain = new TbUserDomain();
+        tbUserDomain.setEmail("1@163.com");
+        tbUserDomain.setUsername("test1");
+        tbUserDomain.setPassword("1234");
+        tbUserDomain.setCreated(new Date());
+        tbUserDomain.setPhone("12345678900");
+        tbUserDomain.setUpdated(new Date());
+        tbUserService.save(tbUserDomain);
     }
 
 }

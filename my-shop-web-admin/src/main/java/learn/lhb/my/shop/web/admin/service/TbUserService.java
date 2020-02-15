@@ -1,5 +1,6 @@
 package learn.lhb.my.shop.web.admin.service;
 
+import learn.lhb.my.shop.commons.dto.BaseResult;
 import learn.lhb.my.shop.domain.TbUserDomain;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public interface TbUserService {
 
     public List<TbUserDomain> selectAll();
 
-    void insert(TbUserDomain tbUserDomain);
+    BaseResult save(TbUserDomain tbUserDomain);
 
     void delete(Long id);
 

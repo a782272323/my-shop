@@ -25,7 +25,8 @@
             </h1>
             <ol class="breadcrumb">
                 <li><a href="/main"><i class="fa fa-dashboard"></i> 首页</a></li>
-                <li class="active">用户管理</li>
+                <li> 用户管理</li>
+                <li> 用户列表</li>
             </ol>
         </section>
 
@@ -35,6 +36,14 @@
             <!-- 用户列表的表格 -->
             <div class="row">
                 <div class="col-xs-12">
+                    <th:block th:if="${baseResult != null}">
+                        <!-- 非空验证弹窗 -->
+                        <div class="alert alert-dismissable " th:classappend="${baseResult.status == 200} ? 'alert-success' : 'alert-danger'">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <span th:text="${baseResult.message}"></span>
+                        </div>
+                    </th:block>
+
                     <div class="box">
                         <div class="box-header">
                             <h3 class="box-title">用户信息列表1</h3>
