@@ -97,3 +97,4 @@ public class TbUserController {
 
     }
 }
+// TODO 把jQuery Validation的用法做个笔记，千峰(最好把文档里有关jQuery的用法都移植到我的笔记里面来)
