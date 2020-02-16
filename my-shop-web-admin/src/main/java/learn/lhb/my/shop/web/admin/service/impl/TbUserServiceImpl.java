@@ -101,15 +101,11 @@ public class TbUserServiceImpl implements TbUserService {
 
     /**
      * 搜索功能(单个搜索框)
-     * @param keyword
+     * @param tbUserDomain
      * @return
      */
     @Override
-    public List<TbUserDomain> search(String keyword) {
-        TbUserDomain  tbUserDomain = new TbUserDomain();
-        tbUserDomain.setUsername(keyword);
-        tbUserDomain.setEmail(keyword);
-        tbUserDomain.setPhone(keyword);
+    public List<TbUserDomain> search(TbUserDomain tbUserDomain) {
         return tbUserDao.search(tbUserDomain);
     }
 

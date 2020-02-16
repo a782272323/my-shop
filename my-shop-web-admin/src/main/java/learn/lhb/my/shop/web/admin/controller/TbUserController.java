@@ -107,12 +107,12 @@ public class TbUserController {
 
     /**
      * 搜索（单个框）
-     * @param keyword
+     * @param tbUserDomain
      * @return
      */
     @PostMapping("search")
-    public String search(String keyword,Model model)    {
-        List<TbUserDomain> tbUserDomains = tbUserService.search(keyword);
+    public String search(TbUserDomain tbUserDomain,Model model)    {
+        List<TbUserDomain> tbUserDomains = tbUserService.search(tbUserDomain);
         model.addAttribute(ConstantUtils.SESSION_USERS,tbUserDomains);
         return "user_list";
     }

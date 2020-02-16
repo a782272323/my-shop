@@ -34,8 +34,8 @@ public interface TbUserService {
 
     /**
      * 搜索功能
-     * @param keyword
+     * @param tbUserDomain
      * @return
      */
-    List<TbUserDomain> search(String keyword);
+    List<TbUserDomain> search(TbUserDomain tbUserDomain);
 }
