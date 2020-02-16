@@ -57,7 +57,7 @@ var Validate = function () {
  * 方法执行完后直接引用js
  * TODO 做个笔记 在jquery里面
  */
-$(document.ready(function () {
+$(document).ready(function () {
     Validate.init();
-}));
+});
 

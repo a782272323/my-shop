@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:HH="http://www.w3.org/1999/xhtml">
 <head>
     <th:block th:include="includes/header :: header"></th:block>
-    <title>我的商场 | 用户列表</title>
+    <title>我的商城 | 用户列表</title>
     <!-- DataTables -->
     <link rel="stylesheet" href="/static/assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 </head>
@@ -74,6 +74,7 @@
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
+                                    <th><input type="checkbox" class="minimal icheck_master">全选</th>
                                     <th>序号</th>
                                         <th>ID</th>
                                         <th>用户名</th>
@@ -86,6 +87,7 @@
                                 </thead>
                                 <tbody>
                                 <tr th:each="tbUser : ${tbUserDomains}">
+                                    <td><input type="checkbox" class="minimal"></td>
                                     <td th:text="${tbUserStat.count}"></td>
                                     <td th:text="${tbUser.id}"></td>
                                     <td th:text="${tbUser.username}"></td>
@@ -180,6 +182,7 @@
                             <table class="table table-hover">
                                 <thead>
                                 <tr>
+                                    <th><input type="checkbox" class="minimal icheck_master">全选</th>
                                     <th>序号</th>
                                         <th>ID</th>
                                         <th>用户名</th>
@@ -192,6 +195,7 @@
                                 </thead>
                                 <tbody>
                                 <tr th:each="tbUser : ${tbUserDomains}">
+                                    <td><input type="checkbox" class="minimal"></td>
                                     <td th:text="${tbUserStat.count}"></td>
                                     <td th:text="${tbUser.id}"></td>
                                     <td th:text="${tbUser.username}"></td>
@@ -220,9 +224,28 @@
     <!-- TODO 注意使用多次的重复代码记得重构，用Thymeleaf来实现，具体仓库itoken项目 -->
 </div>
 
+
 <!-- 引入通用的script -->
 <th:block th:include="includes/footer :: footer"></th:block>
 
+<script>
+
+    $(function () {
+        var _masterCheckbox = $('input[type="checkbox"].minimal.icheck_master');
+        var _checkbox = $('input[type="checkbox"].minimal');
+
+        _masterCheckbox.on("ifClicked", function (e) {
+            //返回ture 表示为选中
+            if (e.target.checked)   {
+                _checkbox.iCheck("uncheck");
+            }
+            // 选中状态
+            else {
+                _checkbox.iCheck("check");
+            }
+        })
+    })
+</script>
 
 <!-- TODO thymeleaf遍历循环做个笔记 -->
 <!-- TODO 这里若想搞比如状态 0绿色，1红色，去参考模版的table源码 -->
