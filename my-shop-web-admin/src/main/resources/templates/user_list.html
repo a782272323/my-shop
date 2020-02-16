@@ -36,6 +36,21 @@
             <!-- 用户列表的表格 -->
             <div class="row">
                 <div class="col-xs-12">
+<!--                    <th:block th:if="${baseResult.status == 200}">-->
+<!--                        &lt;!&ndash; 非空验证弹窗 &ndash;&gt;-->
+<!--                        <div class="alert alert-dismissable " th:classappend="alert-success">-->
+<!--                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>-->
+<!--                            <span th:text="${baseResult.message}"></span>-->
+<!--                        </div>-->
+<!--                    </th:block>-->
+<!--                    <th:block th:if="${baseResult.status == 500}">-->
+<!--                        &lt;!&ndash; 非空验证弹窗 &ndash;&gt;-->
+<!--                        <div class="alert alert-dismissable " th:classappend="alert-danger">-->
+<!--                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>-->
+<!--                            <span th:text="${baseResult.message}"></span>-->
+<!--                        </div>-->
+<!--                    </th:block>-->
+                    <!-- TODO 用户新增表单验证有空优化 -->
                     <th:block th:if="${baseResult != null}">
                         <!-- 非空验证弹窗 -->
                         <div class="alert alert-dismissable " th:classappend="${baseResult.status == 200} ? 'alert-success' : 'alert-danger'">
@@ -96,13 +111,17 @@
                         <div class="box-header">
                             <h3 class="box-title">用户信息列表2</h3>
                             <div class="box-tools">
-                                <div class="input-group input-group-sm" style="width: 150px;">
-                                    <input type="text" name="table_search" class="form-control pull-right" placeholder="搜索">
+                                <!-- 搜索 -->
+                                <form action="/user/search" method="post">
+                                    <div class="input-group input-group-sm" style="width: 150px;">
+                                        <input type="text" name="keyword" class="form-control pull-right" placeholder="全局搜索">
 
-                                    <div class="input-group-btn">
-                                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                        <div class="input-group-btn">
+                                            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                        </div>
                                     </div>
-                                </div>
+                                </form>
+
                             </div>
                         </div>
                         <!-- /.box-header -->

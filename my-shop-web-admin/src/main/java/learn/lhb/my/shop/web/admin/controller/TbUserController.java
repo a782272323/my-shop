@@ -44,6 +44,16 @@ public class TbUserController {
         return tbUserDomain;
     }
 
+//    /**
+//     * 传一个空的结果集给前端
+//     * @return
+//     */
+//    @ModelAttribute
+//    public BaseResult baseResult()  {
+//        BaseResult baseResult = BaseResult.toNull();
+//        return baseResult;
+//    }
+
     /**
      * 跳转到用户列表页
      * @return
@@ -52,7 +62,7 @@ public class TbUserController {
     public String list(Model model)    {
 
         List<TbUserDomain> tbUserDomains = tbUserService.selectAll();
-        model.addAttribute("tbUserDomains",tbUserDomains);
+        model.addAttribute(ConstantUtils.SESSION_USERS,tbUserDomains);
         // TODO for 和 foreach做个笔记,list里面的遍历也做个笔记
 //        for (int i=0;i<tbUserDomains.size();i++)  {
 //            logger.debug("id = {}",tbUserDomains.get(i).getId());
@@ -93,8 +103,18 @@ public class TbUserController {
             model.addAttribute(ConstantUtils.BASERESULT,baseResult);
             return "user_form";
         }
+    }
 
-
+    /**
+     * 搜索（单个框）
+     * @param keyword
+     * @return
+     */
+    @PostMapping("search")
+    public String search(String keyword,Model model)    {
+        List<TbUserDomain> tbUserDomains = tbUserService.search(keyword);
+        model.addAttribute(ConstantUtils.SESSION_USERS,tbUserDomains);
+        return "user_list";
     }
 }
 // TODO 把jQuery Validation的用法做个笔记，千峰(最好把文档里有关jQuery的用法都移植到我的笔记里面来)

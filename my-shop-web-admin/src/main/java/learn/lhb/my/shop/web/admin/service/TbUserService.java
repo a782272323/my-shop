@@ -31,4 +31,11 @@ public interface TbUserService {
      * @return
      */
     TbUserDomain login(String email,String password);
+
+    /**
+     * 搜索功能
+     * @param keyword
+     * @return
+     */
+    List<TbUserDomain> search(String keyword);
 }

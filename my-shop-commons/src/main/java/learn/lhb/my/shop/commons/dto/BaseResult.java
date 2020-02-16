@@ -34,6 +34,10 @@ public class BaseResult implements Serializable {
         return  baseResult;
     }
 
+    public static BaseResult toNull()   {
+        return BaseResult.createResult(0,"");
+    }
+
     /**
      * 封装成功的状态码消息(无参数)
      * @return

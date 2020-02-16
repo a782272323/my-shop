@@ -100,6 +100,20 @@ public class TbUserServiceImpl implements TbUserService {
     }
 
     /**
+     * 搜索功能(单个搜索框)
+     * @param keyword
+     * @return
+     */
+    @Override
+    public List<TbUserDomain> search(String keyword) {
+        TbUserDomain  tbUserDomain = new TbUserDomain();
+        tbUserDomain.setUsername(keyword);
+        tbUserDomain.setEmail(keyword);
+        tbUserDomain.setPhone(keyword);
+        return tbUserDao.search(tbUserDomain);
+    }
+
+    /**
      * 用户信息的有效性验证
      * @param tbUserDomain
      */

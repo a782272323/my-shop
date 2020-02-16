@@ -62,4 +62,11 @@ public interface TbUserDao {
      * @return
      */
     TbUserDomain getById(Long id);
+
+    /**
+     * 精确搜索（高级搜索)
+     * @param tbUserDomain
+     * @return
+     */
+    List<TbUserDomain> search(TbUserDomain tbUserDomain);
 }

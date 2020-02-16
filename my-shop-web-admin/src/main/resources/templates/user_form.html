@@ -56,17 +56,42 @@
                         </div>
                         <!-- /.box-header -->
                         <!-- form start th:classappend="${baseResult.status == 200} ? 'has-success' : 'has-error'" -->
-                        <form class="form-horizontal" action="/user/save" method="post">
+                        <form class="form-horizontal" id="inputForm" action="/user/save" method="post">
                             <div class="box-body ">
+                                <!-- 200 状态码 -->
+<!--                                <th:block th:if="${baseResult.status == 200}">-->
+<!--                                    &lt;!&ndash; 邮箱 &ndash;&gt;-->
+<!--                                    <div class="form-group " > &lt;!&ndash; has-error has-success &ndash;&gt;-->
+<!--                                        <label for="inputEmail" class="col-sm-2 control-label">-->
+<!--                                            <i class="fa fa-times-circle-o" th:if="baseResult.status != 200"></i>-->
+<!--                                            邮箱-->
+<!--                                        </label>-->
+
+<!--                                        <div class="col-sm-10">-->
+<!--                                            <input type="text" class="form-control" id="inputEmail" name="email" placeholder="请输入用户的邮箱地址" th:value="${tbUserDomain.email}" >-->
+<!--                                            &lt;!&ndash; 帮助或提示信息 &ndash;&gt;-->
+<!--                                            <th:block th:switch="${baseResult.status == 200}">-->
+<!--                                                <span class="help-block" th:case="true" ></span>-->
+<!--                                                <span class="help-block" th:case="false" th:text="${baseResult.message}"></span>-->
+<!--                                            </th:block>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </th:block>-->
+
                                 <div class="form-group " > <!-- has-error has-success -->
-                                    <label for="inputEmail" class="col-sm-2 control-label"><i class="fa fa-check"></i> 邮箱</label>
+                                    <label for="inputEmail" class="col-sm-2 control-label">
+                                        邮箱
+                                    </label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputEmail" name="email" placeholder="请输入用户的邮箱地址" th:value="${tbUserDomain.email}">
+                                        <input type="text" class="form-control" id="inputEmail" name="email" placeholder="请输入用户的邮箱地址" th:value="${tbUserDomain.email}" >
                                         <!-- 帮助或提示信息 -->
-<!--                                        <span class="help-block">Help block with error</span>-->
+<!--                                        <th:block th:if="${baseResult != null}">-->
+<!--                                            <span class="help-block" th:if="baseResult.status != 200" th:text="${baseResult.message}"></span>-->
+<!--                                        </th:block>-->
                                     </div>
                                 </div>
+                                <!-- 密码 -->
                                 <div class="form-group">
                                     <label for="inputPassword" class="col-sm-2 control-label">密码</label>
 
@@ -117,6 +142,7 @@
 
     })
 </script>
+
 </body>
 </html>
 
