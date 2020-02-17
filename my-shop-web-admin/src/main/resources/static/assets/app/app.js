@@ -63,7 +63,7 @@ var App = function () {
         });
 
         // 如果没有选，则弹出框警告
-        if (_idArray.length === 0)   {
+        if (_idArray.length === 0) {
             $("#modal-message-user0").html("您还没有选择任何要删除的数据，请至少选择一项");
             $("#model-message-user1").html("改操作属于用户管理的模态框操作");
         } else { // 如果选了，提示是否删除
@@ -74,54 +74,9 @@ var App = function () {
         $("#modal-default").modal("show");
 
         // 用户选择了数据项，调用删除方法
-        $("#btnModalOK").bind("click",function () {
+        $("#btnModalOK").bind("click", function () {
             handlerDeleteData(url);
-            // delss();
         });
-
-        // $("#btnModalOK").bind("click",function () {
-        //     handlerDeleteData(url);
-        // });
-
-        /**
-         * 当前私有函数的私有函数
-         */
-        // function delss() {
-        //     $('#modal-default').modal("hide");
-        //     // 没有选择数据项的处理
-        //     if (_idArray.length === 0)  {
-        //
-        //     }
-        //     // 删除操作
-        //     else {
-        //         setTimeout(function () {
-        //             $.ajax({
-        //                 "url": url,
-        //                 "type": "POST",
-        //                 "data": {"ids" : _idArray.toString()},
-        //                 "dataType": "JSON",
-        //                 "success": function (data) {
-        //                     // 删除成功
-        //                     if (data.status === 200)    {
-        //                         window.location.reload();
-        //                     }
-        //                     // 删除失败
-        //                     else {
-        //                         $("#btnModalOK").unbind("click");
-        //                         $("#btnModalOK").bind("click",function () {
-        //                             $('#modal-default').modal("hide");
-        //                         });
-        //
-        //                         $("#modal-message-user0").html(data.message);
-        //                         $('#modal-default').modal("show");
-        //                     }
-        //                     console.log(data);
-        //
-        //                 }
-        //             });
-        //         },500);
-        //     }
-        // }
     };
 
     /**
@@ -147,7 +102,7 @@ var App = function () {
                        if (data.status === 200) {
                            // 刷新页面
                            $("#btnModalOK").bind("click", function () {
-                               window.location.href("/user/list");
+                               window.location.replace("/user/list");
                            });
                        }
                        // 请求失败
@@ -165,6 +120,65 @@ var App = function () {
                 });
             },500);//延时操作 500毫秒
         }
+    };
+
+    /**
+     * jQuery 插件 DataTable的封装
+     * @param url
+     * @param columns
+     */
+    var handlerInitDataTables = function (url,columns) {
+
+        $("#dataTable123").DataTable({
+            // TODO 这个 jquery 插件的用法，结合这里做一个笔记
+            "paging": true, // 左上角选择展示的数据条数
+            "stateSave": true, // 开启当前页面处于对应分页的保存状态
+            "info": true, // 左下角的信息
+            "ordering": false, // 不允许开启排序
+            "processing": true, // 若页面加载时间过长的温馨提示
+            "searching": false, // 右上角的本地搜索关闭
+            "serverSide": true, // 分页给后台做
+            // "ajax": "/user/page", // 分页给后台做，后台分页的地址，拿数据的
+            "deferRender": true, // 延迟渲染，提高速度
+            // 传参数给后台
+            "ajax": {
+                "url": url,
+            },
+            // 后台传送的数据用户表格展示
+            "columns": columns,
+            // 把语言变成中文,可以根据内容自定义
+            "language": {
+                "sProcessing": "载入中...请耐心等待",
+                "sLengthMenu": "当前页面要显示的数据项数 _MENU_ ",
+                "sZeroRecords": "没有匹配结果",
+                "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+                "sInfoPostFix": "",
+                "sSearch": "搜索:",
+                "sUrl": "",
+                "sEmptyTable": "表中数据为空",
+                "sLoadingRecords": "载入中...请耐心等待",
+                "sInfoThousands": ",",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上一页",
+                    "sNext": "下一页",
+                    "sLast": "末页"
+                },
+                "oAria": {
+                    "sSortAscending": ": 以升序排列此列",
+                    "sSortDescending": ": 以降序排列此列"
+                }
+            },
+            // 表格渲染后回调函数，此处用来激活全选的框样式
+            "drawCallback": function( settings ) {
+                // 初始化和实现 全选效果
+                handlerChecobox();
+                handlerCheckboxAll();
+            },
+        });
+
     };
 
 
@@ -192,7 +206,16 @@ var App = function () {
         deleteMulti: function (url) {
             handlerDeleteMulti(url);
 
-        }
+        },
+
+        /**
+         * jquery Datatables插件的参数封装
+         * @param url
+         * @param columns
+         */
+        initDataTables: function (url,columns) {
+            handlerInitDataTables(url,columns);
+        },
     }
 
 }();

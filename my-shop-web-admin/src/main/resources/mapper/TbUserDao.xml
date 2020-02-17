@@ -138,4 +138,18 @@
         SELECT username FROM tb_user WHERE username = #{phone}
     </select>
 
+    <!-- 分页查询 -->
+    <select id="page" resultType="TbUserDomain" parameterType="java.util.Map">
+        <!-- 这里实体类的属性没有start和length，就使用Map的键值，比如键是start，那值就是length -->
+        SELECT 
+        <include refid="tbUserColumns"/>
+        FROM
+        tb_user AS a LIMIT ${start},${length}
+    </select>
+
+    <!-- 分页查询返回的总条数 -->
+    <select id="count" resultType="java.lang.Integer">
+        SELECT count(*) FROM tb_user
+    </select>
+
 </mapper>

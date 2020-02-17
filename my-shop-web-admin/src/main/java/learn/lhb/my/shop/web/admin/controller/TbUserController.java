@@ -2,6 +2,7 @@ package learn.lhb.my.shop.web.admin.controller;
 
 import learn.lhb.my.shop.commons.constant.ConstantUtils;
 import learn.lhb.my.shop.commons.dto.BaseResult;
+import learn.lhb.my.shop.commons.dto.DataTablePageInfo;
 import learn.lhb.my.shop.domain.TbUserDomain;
 import learn.lhb.my.shop.web.admin.service.TbUserService;
 import org.apache.commons.lang3.StringUtils;
@@ -13,7 +14,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 用户管理
@@ -88,7 +93,7 @@ public class TbUserController {
      * @return
      */
     @PostMapping("save")
-    public String save (TbUserDomain tbUserDomain, Model model, RedirectAttributes redirectAttributes)  {
+    public String save (@ModelAttribute(value = "tbUser") TbUserDomain tbUserDomain, Model model, RedirectAttributes redirectAttributes)  {
         BaseResult baseResult = tbUserService.save(tbUserDomain);
 
         // 保存成功
@@ -104,7 +109,7 @@ public class TbUserController {
     }
 
     /**
-     * 搜索（单个框）
+     * 搜索
      * @param tbUserDomain
      * @return
      */
@@ -134,5 +139,29 @@ public class TbUserController {
         return baseResult;
     }
 
+    // TODO java 枚举
+
+    /**
+     * 分页查询
+     * @return
+     */
+    @ResponseBody
+    @GetMapping("page")
+    public DataTablePageInfo<TbUserDomain> page(HttpServletRequest request)    {
+
+
+        String strDraw = request.getParameter("draw");
+        String strStart = request.getParameter("start");
+        String strLength = request.getParameter("length");
+
+        int draw = strDraw == null ? 0 : Integer.parseInt(strDraw);
+        int start = strStart == null ? 0 : Integer.parseInt(strStart);
+        int length = strLength == null ? 10 : Integer.parseInt(strLength);
+
+        // 封装 Databales 需要的结果
+        DataTablePageInfo<TbUserDomain> pageInfo = tbUserService.page(draw, start, length);
+
+        return pageInfo;
+    }
 }
 // TODO 把jQuery Validation的用法做个笔记，千峰(最好把文档里有关jQuery的用法都移植到我的笔记里面来)

@@ -1,6 +1,7 @@
 package learn.lhb.my.shop.web.admin.service;
 
 import learn.lhb.my.shop.commons.dto.BaseResult;
+import learn.lhb.my.shop.commons.dto.DataTablePageInfo;
 import learn.lhb.my.shop.domain.TbUserDomain;
 import org.apache.commons.lang3.StringUtils;
 
@@ -66,4 +67,19 @@ public interface TbUserService {
      * @return
      */
     boolean findPhone(String phone);
+
+    /**
+     * 分页查询
+     * @param draw
+     * @param start
+     * @param length
+     * @return
+     */
+    DataTablePageInfo<TbUserDomain> page(int draw,int start, int length);
+
+    /**
+     * 分页查询总笔数
+     * @return
+     */
+    int count();
 }

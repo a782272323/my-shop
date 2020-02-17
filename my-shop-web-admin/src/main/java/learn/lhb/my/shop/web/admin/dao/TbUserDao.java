@@ -96,4 +96,24 @@ public interface TbUserDao {
      * @return
      */
     TbUserDomain findPhone(String phone);
+
+    /**
+     * 分页查询
+     * @param params 需要两个参数，start/记录开始的位置（需要计算MySQL）,length/每页加载条数
+     * @return
+     */
+    List<TbUserDomain> page(Map<String,Object> params);
+
+    /**
+     * 查询总条数
+     * @return
+     */
+    int count();
+
+    /**
+     * 返回带条件搜索的总条数
+     * @param tbUserDomain
+     * @return
+     */
+    int someCount(TbUserDomain tbUserDomain);
 }

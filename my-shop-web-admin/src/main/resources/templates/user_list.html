@@ -110,43 +110,27 @@
                     <div class="box box-info">
                         <div class="box-header">
                             <h3 class="box-title">用户信息列表</h3>
+                        </div>
+
+                        <!-- 按钮 -->
+                        <div class="box-body ">
                             <!-- 按钮 -->
-                            <div class="row" style="padding-left: 15px;padding-top: 10px;margin-top: 10px">
-                                <a href="/user/form" type="button" class="btn btn-default" style="margin-right: 10px;"><i class="fa fa-plus" > 新增</i></a>
-                                <button type="button" class="btn btn-default" style="margin-right: 10px;" onclick="App.deleteMulti('/user/delete')"><i class="fa fa-trash-o" > 批量删除</i></button>
-                                <a href="#" type="button" class="btn btn-default" style="margin-right: 10px;"><i class="fa fa-download" > 导入</i></a>
-                                <a href="#" type="button" class="btn btn-default" style="margin-right: 10px;"><i class="fa fa-external-link" > 导出</i></a>
-                                <button type="button" class="btn btn-info" style="margin-right: 10px;"
-                                        onclick="$('.box-info-search').css('display') == 'none' ? $('.box-info-search').show('fast') : $('.box-info-search').hide('fast')">
-                                    <i class="fa fa-search" > 搜索</i></button>
-                            </div>
-
-                            <div class="row" style="padding-left: 5px;padding-top: 10px;">
-
-
-                            </div>
-
-                            <!--                            <div class="box-tools">-->
-                            <!--                                <form action="/user/search" method="post">-->
-                            <!--                                    <div class="input-group input-group-sm" style="width: 150px;">-->
-                            <!--                                        <input type="text" name="keyword" class="form-control pull-right" placeholder="全局搜索">-->
-
-                            <!--                                        <div class="input-group-btn">-->
-                            <!--                                            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                </form>-->
-                            <!--                            </div>-->
-
+                            <a href="/user/form" type="button" class="btn btn-default" style="margin-right: 10px;"><i class="fa fa-plus" > 新增</i></a>
+                            <button type="button" class="btn btn-default" style="margin-right: 10px;" onclick="App.deleteMulti('/user/delete')"><i class="fa fa-trash-o" > 批量删除</i></button>
+                            <a href="#" type="button" class="btn btn-default" style="margin-right: 10px;"><i class="fa fa-download" > 导入</i></a>
+                            <a href="#" type="button" class="btn btn-default" style="margin-right: 10px;"><i class="fa fa-external-link" > 导出</i></a>
+                            <button type="button" class="btn btn-info" style="margin-right: 10px;"
+                                    onclick="$('.box-info-search').css('display') == 'none' ? $('.box-info-search').show('fast') : $('.box-info-search').hide('fast')">
+                                <i class="fa fa-search" > 搜索</i></button>
                         </div>
 
                         <!-- /.box-header -->
-                        <div class="box-body table-responsive no-padding">
-                            <table class="table table-hover">
+                        <div class="box-body table-responsive ">
+                            <table id="dataTable123" class="table table-hover">
                                 <thead>
                                 <tr>
                                     <th><input type="checkbox" class="minimal icheck_master">全选</th>
-                                    <th>序号</th>
+<!--                                    <th>序号</th>-->
                                     <th>ID</th>
                                     <th>用户名</th>
                                     <th>手机号码</th>
@@ -157,57 +141,9 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:each="tbUser : ${tbUserDomains}">
-                                    <td><input th:id="${tbUser.id}" type="checkbox" class="minimal"></td>
-                                    <td th:text="${tbUserStat.count}"></td>
-                                    <td th:text="${tbUser.id}"></td>
-                                    <td th:text="${tbUser.username}"></td>
-                                    <td th:text="${tbUser.phone}"></td>
-                                    <td th:text="${tbUser.email}"></td>
-                                    <td th:text="${#dates.format(tbUser.created, 'yyyy-MM-dd HH:mm:ss')}"></td>
-                                    <td th:text="${#dates.format(tbUser.created, 'yyyy-MM-dd HH:mm:ss')}"></td>
-                                    <td>
-                                        <a href="#" type="button" class="btn btn-sm btn-default" style="margin-right: 5px;"><i class="fa fa-search" > 查看</i></a>
-                                        <a href="#" type="button" class="btn btn-sm btn-info" style="margin-right: 5px;"><i class="fa fa-edit (alias)" > 编辑</i></a>
-                                        <a href="#" type="button" class="btn btn-sm btn-danger" style="margin-right: 5px;"><i class="fa fa-trash" > 删除</i></a>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- /.box-body -->
-                    </div>
 
-
-<!--                    <div class="box">-->
-<!--                        <div class="box-header">-->
-<!--                            <h3 class="box-title">用户信息列表1</h3>-->
-<!--                            <div class="row" style="padding-left: 15px;padding-top: 10px;">-->
-<!--                                <a href="/user/form" type="button" class="btn btn-default" style="margin-right: 10px;"><i class="fa fa-plus" > 新增</i></a>-->
-<!--                                <a href="#" type="button" class="btn btn-default" style="margin-right: 10px;"><i class="fa fa-trash-o" > 批量删除</i></a>-->
-<!--                                <a href="#" type="button" class="btn btn-default" style="margin-right: 10px;"><i class="fa fa-download" > 导入</i></a>-->
-<!--                                <a href="#" type="button" class="btn btn-default" style="margin-right: 10px;"><i class="fa fa-external-link" > 导出</i></a>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        &lt;!&ndash; /.box-header &ndash;&gt;-->
-<!--                        <div class="box-body">-->
-<!--                            <table id="example1" class="table table-bordered table-striped">-->
-<!--                                <thead>-->
-<!--                                <tr>-->
-<!--&lt;!&ndash;                                    <th><input type="checkbox" class="minimal s">全选</th>&ndash;&gt;-->
-<!--                                    <th>序号</th>-->
-<!--                                        <th>ID</th>-->
-<!--                                        <th>用户名</th>-->
-<!--                                        <th>手机号码</th>-->
-<!--                                        <th>邮箱</th>-->
-<!--                                        <th>创建时间</th>-->
-<!--                                        <th>更新时间</th>-->
-<!--                                        <th>操作</th>-->
-<!--                                </tr>-->
-<!--                                </thead>-->
-<!--                                <tbody>-->
 <!--                                <tr th:each="tbUser : ${tbUserDomains}">-->
-<!--&lt;!&ndash;                                    <td><input type="checkbox" class="minimal ss"></td>&ndash;&gt;-->
+<!--                                    <td><input th:id="${tbUser.id}" type="checkbox" class="minimal"></td>-->
 <!--                                    <td th:text="${tbUserStat.count}"></td>-->
 <!--                                    <td th:text="${tbUser.id}"></td>-->
 <!--                                    <td th:text="${tbUser.username}"></td>-->
@@ -215,19 +151,18 @@
 <!--                                    <td th:text="${tbUser.email}"></td>-->
 <!--                                    <td th:text="${#dates.format(tbUser.created, 'yyyy-MM-dd HH:mm:ss')}"></td>-->
 <!--                                    <td th:text="${#dates.format(tbUser.created, 'yyyy-MM-dd HH:mm:ss')}"></td>-->
-<!--                                    <td >-->
+<!--                                    <td>-->
 <!--                                        <a href="#" type="button" class="btn btn-sm btn-default" style="margin-right: 5px;"><i class="fa fa-search" > 查看</i></a>-->
-<!--                                        <a href="#" type="button" class="btn btn-sm btn-primary" style="margin-right: 5px;"><i class="fa fa-edit (alias)" > 编辑</i></a>-->
+<!--                                        <a href="#" type="button" class="btn btn-sm btn-info" style="margin-right: 5px;"><i class="fa fa-edit (alias)" > 编辑</i></a>-->
 <!--                                        <a href="#" type="button" class="btn btn-sm btn-danger" style="margin-right: 5px;"><i class="fa fa-trash" > 删除</i></a>-->
 <!--                                    </td>-->
 <!--                                </tr>-->
-<!--                                </tbody>-->
-<!--                            </table>-->
-<!--                        </div>-->
-<!--                        &lt;!&ndash; /.box-body &ndash;&gt;-->
-<!--                    </div>-->
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
 
-                    <!-- /.box -->
                 </div>
             </div>
         </section>
@@ -245,8 +180,107 @@
 <!-- 引入通用的script -->
 <th:block th:include="includes/footer :: footer"></th:block>
 
+
+<script>
+    $(function () {
+
+
+        var _columns = [
+                {
+                    // 用函数返回 全选框
+                    "data": function (row, type, val, meta) {
+                        return '<input id="'+row.id+'" type="checkbox" class="minimal">';
+                    }
+                },
+                { "data": "id" },
+                { "data": "username" },
+                { "data": "phone" },
+                { "data": "email" },
+                { "data": "created" },
+                { "data": "updated" },
+                {   // 查看，编辑，删除按钮
+                    "data": function (row,type,val,meta) {
+                        return '<a href="#" type="button" id="'+row.id+'" class="btn btn-sm btn-default" style="margin-right: 5px;"><i class="fa fa-search" > 查看</i></a>&nbsp;&nbsp;&nbsp;' +
+                            '<a href="/user/form?id='+row.id+'" type="button" id="'+row.id+'" class="btn btn-sm btn-info" style="margin-right: 5px;"><i class="fa fa-edit (alias)" > 编辑</i></a>&nbsp;&nbsp;&nbsp;' +
+                            '<a href="#" type="button" id="'+row.id+'" class="btn btn-sm btn-danger" style="margin-right: 5px;"><i class="fa fa-trash" > 删除</i></a>';
+                    }
+                }
+            ];
+        App.initDataTables("/user/page",_columns);
+
+        // $("#dataTable123").DataTable({
+        //     // TODO 这个 jquery 插件的用法，结合这里做一个笔记
+        //     "paging": true, // 左上角选择展示的数据条数
+        //     "stateSave": true, // 开启当前页面处于那个分页的保存状态
+        //     "info": true, // 左下角的信息
+        //     "ordering": false, // 不允许开启排序
+        //     "processing": true, // 若页面加载时间过长的温馨提示
+        //     "searching": false, // 右上角的本地搜索关闭
+        //     "serverSide": true, // 分页给后台做
+        //     // "ajax": "/user/page", // 分页给后台做，后台分页的地址，拿数据的
+        //     "deferRender": true, // 延迟渲染，提高速度
+        //     // 传参数给后台
+        //     "ajax": {
+        //         "url": "/user/page",
+        //     },
+        //     // 后台传送的数据用户表格展示
+        //     "columns": [
+        //         {
+        //             // 用函数返回 全选框
+        //             "data": function (row, type, val, meta) {
+        //                 return '<input id="'+row.id+'" type="checkbox" class="minimal">';
+        //             }
+        //         },
+        //         { "data": "id" },
+        //         { "data": "username" },
+        //         { "data": "phone" },
+        //         { "data": "email" },
+        //         { "data": "created" },
+        //         { "data": "updated" },
+        //         {   // 查看，编辑，删除按钮
+        //             "data": function (row,type,val,meta) {
+        //                 return '<a href="#" type="button" id="'+row.id+'" class="btn btn-sm btn-default" style="margin-right: 5px;"><i class="fa fa-search" > 查看</i></a>&nbsp;&nbsp;&nbsp;' +
+        //                        '<a href="#" type="button" id="'+row.id+'" class="btn btn-sm btn-info" style="margin-right: 5px;"><i class="fa fa-edit (alias)" > 编辑</i></a>&nbsp;&nbsp;&nbsp;' +
+        //                        '<a href="#" type="button" id="'+row.id+'" class="btn btn-sm btn-danger" style="margin-right: 5px;"><i class="fa fa-trash" > 删除</i></a>';
+        //             }
+        //         }
+        //     ],
+        //     // 把语言变成中文,可以根据内容自定义
+        //     "language": {
+        //         "sProcessing": "载入中...请耐心等待",
+        //         "sLengthMenu": "当前页面要显示的数据项数 _MENU_ ",
+        //         "sZeroRecords": "没有匹配结果",
+        //         "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+        //         "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+        //         "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+        //         "sInfoPostFix": "",
+        //         "sSearch": "搜索:",
+        //         "sUrl": "",
+        //         "sEmptyTable": "表中数据为空",
+        //         "sLoadingRecords": "载入中...请耐心等待",
+        //         "sInfoThousands": ",",
+        //         "oPaginate": {
+        //             "sFirst": "首页",
+        //             "sPrevious": "上一页",
+        //             "sNext": "下一页",
+        //             "sLast": "末页"
+        //         },
+        //         "oAria": {
+        //             "sSortAscending": ": 以升序排列此列",
+        //             "sSortDescending": ": 以降序排列此列"
+        //         }
+        //     },
+        //     // 表格渲染后回调函数，此处用来激活全选的框样式
+        //     "drawCallback": function( settings ) {
+        //         App.init();
+        //     },
+        // });
+    });
+</script>
+
 <!-- TODO thymeleaf遍历循环做个笔记 -->
 <!-- TODO 这里若想搞比如状态 0绿色，1红色，去参考模版的table源码 -->
 <!-- TODO thymeleaf 日期的用法做个笔记 -->
+<!-- TODO 使用了datatables后，之前写的搜索框就失效了，有空完善一下 -->
 </body>
 </html>

@@ -1,5 +1,7 @@
 package learn.lhb.my.shop.domain;
 
+import learn.lhb.my.shop.commons.persistence.BaseEntity;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,23 +11,12 @@ import java.util.Date;
  * @date 2020/2/13.
  * @time 22:56
  */
-public class TbUserDomain implements Serializable {
+public class TbUserDomain extends BaseEntity {
 
-    private Long id;//用户编号
     private String username;//用户名
     private String phone;//注册手机号
     private String password;//密码，加密存储
     private String email;//注册邮箱
-    private Date created;//创建时间
-    private Date updated;//更新时间
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getUsername() {
         return username;
@@ -59,19 +50,4 @@ public class TbUserDomain implements Serializable {
         this.email = email;
     }
 
-    public Date getCreated() {
-        return created;
-    }
-
-    public void setCreated(Date created) {
-        this.created = created;
-    }
-
-    public Date getUpdated() {
-        return updated;
-    }
-
-    public void setUpdated(Date updated) {
-        this.updated = updated;
-    }
 }

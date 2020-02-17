@@ -17,7 +17,11 @@
     <description></description>
 
     <dependencies>
-
+        <dependency>
+            <groupId>learn.lhb</groupId>
+            <artifactId>my-shop-commons</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
     </dependencies>
 
 </project>

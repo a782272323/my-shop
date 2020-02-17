@@ -2,6 +2,7 @@ package learn.lhb.my.shop.web.admin.service.impl;
 
 import learn.lhb.my.shop.commons.constant.ConstantUtils;
 import learn.lhb.my.shop.commons.dto.BaseResult;
+import learn.lhb.my.shop.commons.dto.DataTablePageInfo;
 import learn.lhb.my.shop.commons.utils.IsRegexpUtils;
 import learn.lhb.my.shop.domain.TbUserDomain;
 import learn.lhb.my.shop.web.admin.dao.TbUserDao;
@@ -14,7 +15,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author 梁鸿斌
@@ -100,16 +103,6 @@ public class TbUserServiceImpl implements TbUserService {
     }
 
     /**
-     * 搜索功能(单个搜索框)
-     * @param tbUserDomain
-     * @return
-     */
-    @Override
-    public List<TbUserDomain> search(TbUserDomain tbUserDomain) {
-        return tbUserDao.search(tbUserDomain);
-    }
-
-    /**
      * 批量删除
      * @param ids
      */
@@ -161,6 +154,49 @@ public class TbUserServiceImpl implements TbUserService {
     }
 
     /**
+     * 分页查询
+     * @param start
+     * @param length
+     * @return
+     */
+    @Override
+    public DataTablePageInfo<TbUserDomain> page(int draw,int start, int length) {
+        int count = tbUserDao.count();
+
+        Map<String,Object> params = new HashMap<>();
+//        params.clear();
+        params.put("start",start);
+        params.put("length",length);
+
+        DataTablePageInfo<TbUserDomain> pageInfo = new DataTablePageInfo<>();
+        pageInfo.setDraw(draw);
+        pageInfo.setRecordsTotal(count);
+        pageInfo.setRecordsFiltered(count);
+        pageInfo.setData(tbUserDao.page(params));
+
+        return pageInfo;
+    }
+
+    /**
+     * 搜索功能
+     * @param tbUserDomain
+     * @return
+     */
+    @Override
+    public List<TbUserDomain> search(TbUserDomain tbUserDomain) {
+        return tbUserDao.search(tbUserDomain);
+    }
+
+    /**
+     * 返回全部表格的总条数
+     * @return
+     */
+    @Override
+    public int count() {
+        return tbUserDao.count();
+    }
+
+    /**
      * 用户信息的有效性验证
      * @param tbUserDomain
      */
@@ -208,10 +244,10 @@ public class TbUserServiceImpl implements TbUserService {
         else if (findPhone(tbUserDomain.getPhone()))  {
             baseResult = BaseResult.error("手机号码重复，请重新输入");
         }
-
-
         return baseResult;
     }
+
+
 }
 
 // TODO 做一个springMVC 与 thymeleaf的表单标签库 的 笔记
