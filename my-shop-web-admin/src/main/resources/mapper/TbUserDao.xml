@@ -111,7 +111,31 @@
                 AND a.email LIKE CONCAT ('%',#{email},'%')
             </if>
         </where>
+    </select>
 
+    <!-- 批量删除 -->
+    <delete id="deleteMulti">
+        DELETE FROM tb_user
+        WHERE id IN
+        <foreach collection="array" open="(" close=")" separator="," item="id">
+            <!-- array数组类型，open是左括号，close是右括号，separator是定义分割符号 TODO 这个笔记补充到mybatis里面去 -->
+            #{id}
+        </foreach>
+    </delete>
+
+    <!-- 校验邮箱是否重复 -->
+    <select id="findEmail" resultType="TbUserDomain" parameterType="String">
+        SELECT email FROM tb_user WHERE email = #{email}
+    </select>
+
+    <!-- 校验手机号码是否重复 -->
+    <select id="findPhone" resultType="TbUserDomain" parameterType="String">
+        SELECT phone FROM tb_user WHERE phone = #{phone}
+    </select>
+
+    <!-- 校验用户名是否重复 -->
+    <select id="findUsername" resultType="TbUserDomain" parameterType="String">
+        SELECT username FROM tb_user WHERE username = #{phone}
     </select>
 
 </mapper>

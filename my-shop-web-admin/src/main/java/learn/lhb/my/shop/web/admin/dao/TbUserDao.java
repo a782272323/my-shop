@@ -69,4 +69,31 @@ public interface TbUserDao {
      * @return
      */
     List<TbUserDomain> search(TbUserDomain tbUserDomain);
+
+    /**
+     * 批量删除
+     * @param ids
+     */
+    void deleteMulti(String[] ids);
+
+    /**
+     * 校验邮箱是否重复
+     * @param email
+     * @return
+     */
+    TbUserDomain findEmail(String email);
+
+    /**
+     * 校验用户名是否重复
+     * @param email
+     * @return
+     */
+    TbUserDomain findUsername(String email);
+
+    /**
+     * 校验手机号码是否重复
+     * @param phone
+     * @return
+     */
+    TbUserDomain findPhone(String phone);
 }

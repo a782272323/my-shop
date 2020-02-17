@@ -110,6 +110,57 @@ public class TbUserServiceImpl implements TbUserService {
     }
 
     /**
+     * 批量删除
+     * @param ids
+     */
+    @Override
+    public void deleteMulti(String[] ids) {
+        tbUserDao.deleteMulti(ids);
+    }
+
+    /**
+     * 校验邮箱是否重复
+     * @param email
+     * @return
+     */
+    @Override
+    public boolean findEmail(String email) {
+        TbUserDomain tbUserDomain = tbUserDao.findEmail(email);
+        if (tbUserDomain == null)   {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 校验用户名是否重复
+     * @param username
+     * @return
+     */
+    @Override
+    public boolean findUsername(String username) {
+        TbUserDomain tbUserDomain = tbUserDao.findUsername(username);
+        if (tbUserDomain == null)   {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 电话号码是否重复
+     * @param phone
+     * @return
+     */
+    @Override
+    public boolean findPhone(String phone) {
+        TbUserDomain tbUserDomain = tbUserDao.findPhone(phone);
+        if (tbUserDomain == null)   {
+            return false;
+        }
+        return true;
+    }
+
+    /**
      * 用户信息的有效性验证
      * @param tbUserDomain
      */
@@ -129,6 +180,10 @@ public class TbUserServiceImpl implements TbUserService {
         else if(!IsRegexpUtils.checkEmail(tbUserDomain.getEmail())) {
             baseResult = BaseResult.error("邮箱格式不正确，请重新输入");
         }
+        // 验证邮箱是否重复
+        else if(findEmail(tbUserDomain.getEmail()))   {
+            baseResult = BaseResult.error("邮箱重复，请重新输入");
+        }
         // 密码 password 非空验证
         else if(StringUtils.isBlank(tbUserDomain.getPassword())) {
             baseResult = BaseResult.error(500,"密码不能为空,请重新输入");
@@ -137,6 +192,10 @@ public class TbUserServiceImpl implements TbUserService {
         else if (StringUtils.isBlank(tbUserDomain.getUsername()))   {
             baseResult = BaseResult.error(500,"姓名不能为空,请重新输入");
         }
+        // 用户姓名重复验证
+        else if (findUsername(tbUserDomain.getUsername())) {
+            baseResult = BaseResult.error("用户名重复，请重新输入");
+        }
         // 手机号 phone 非空验证
         else if(StringUtils.isBlank(tbUserDomain.getPhone())) {
             baseResult = BaseResult.error(500,"手机号不能为空,请重新输入");
@@ -144,6 +203,10 @@ public class TbUserServiceImpl implements TbUserService {
         // 手机格式验证
         else if (!IsRegexpUtils.checkPhone(tbUserDomain.getPhone())) {
             baseResult = BaseResult.error("手机格式不正确，请重新输入");
+        }
+        // 手机重复验证
+        else if (findPhone(tbUserDomain.getPhone()))  {
+            baseResult = BaseResult.error("手机号码重复，请重新输入");
         }
 
 

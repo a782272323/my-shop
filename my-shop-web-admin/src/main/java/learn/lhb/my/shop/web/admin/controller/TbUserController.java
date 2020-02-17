@@ -4,15 +4,13 @@ import learn.lhb.my.shop.commons.constant.ConstantUtils;
 import learn.lhb.my.shop.commons.dto.BaseResult;
 import learn.lhb.my.shop.domain.TbUserDomain;
 import learn.lhb.my.shop.web.admin.service.TbUserService;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -116,5 +114,25 @@ public class TbUserController {
         model.addAttribute(ConstantUtils.SESSION_USERS,tbUserDomains);
         return "user_list";
     }
+
+    /**
+     * 删除用户信息
+     * @param ids
+     * @return
+     */
+    @ResponseBody
+    @PostMapping("delete")
+    public BaseResult delete(String ids)    {
+        BaseResult baseResult = null;
+        if (StringUtils.isNoneBlank(ids))   {
+            baseResult = BaseResult.ok("删除用户成功");
+            String[] idArray = ids.split(",");
+            tbUserService.deleteMulti(idArray);
+        }   else {
+            baseResult = BaseResult.error("删除用户失败");
+        }
+        return baseResult;
+    }
+
 }
 // TODO 把jQuery Validation的用法做个笔记，千峰(最好把文档里有关jQuery的用法都移植到我的笔记里面来)

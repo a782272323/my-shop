@@ -2,6 +2,7 @@ package learn.lhb.my.shop.web.admin.service;
 
 import learn.lhb.my.shop.commons.dto.BaseResult;
 import learn.lhb.my.shop.domain.TbUserDomain;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 
@@ -38,4 +39,31 @@ public interface TbUserService {
      * @return
      */
     List<TbUserDomain> search(TbUserDomain tbUserDomain);
+
+    /**
+     * 批量删除
+     * @param ids
+     */
+    void deleteMulti(String[] ids);
+
+    /**
+     * 邮箱是否重复
+     * @param email
+     * @return
+     */
+    boolean findEmail(String email);
+
+    /**
+     * 姓名是否重复
+     * @param username
+     * @return
+     */
+    boolean findUsername(String username);
+
+    /**
+     * 手机号码是否重复
+     * @param phone
+     * @return
+     */
+    boolean findPhone(String phone);
 }

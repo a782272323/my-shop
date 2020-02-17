@@ -80,4 +80,14 @@ public class TbUserServiceTest {
         tbUserService.save(tbUserDomain);
     }
 
+    @Test
+    public void find()  {
+
+        if (tbUserService.findEmail("LHBdfs@qq.com") == true) {
+            System.out.println("重复");
+        } else {
+            System.out.println("不重复");
+        }
+    }
+
 }

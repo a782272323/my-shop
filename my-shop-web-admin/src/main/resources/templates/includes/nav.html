@@ -40,7 +40,7 @@
 <!--                            </p>-->
                             <p>
                                 <th:block th:text="'你好 '+${session.tbUserDomain.username}+' , 欢迎你'"></th:block>
-                                <small><th:block th:text="'创建时间: '+${session.tbUserDomain.created}"></th:block></small>
+                                <small><th:block th:text="'创建时间: '+${#dates.format(session.tbUserDomain.created, 'yyyy-MM-dd HH:mm:ss')}"></th:block></small>
                             </p>
                         </li>
 

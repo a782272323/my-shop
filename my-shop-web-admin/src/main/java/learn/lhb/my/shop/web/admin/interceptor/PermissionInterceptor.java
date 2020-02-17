@@ -29,7 +29,7 @@ public class PermissionInterceptor implements HandlerInterceptor {
 
         //以 login 结尾的请求
         // TODO model,modelMap,modelAndView 用法补完全一点
-        if (modelAndView.getViewName().endsWith("login"))   {
+        if (modelAndView != null && modelAndView.getViewName() != null && modelAndView.getViewName().endsWith("login"))   {
             TbUserDomain tbUserDomain = (TbUserDomain) request.getSession().getAttribute(ConstantUtils.SESSION_USER);
             if (tbUserDomain != null) {
                 response.sendRedirect("/main");
