@@ -1,5 +1,6 @@
 package learn.lhb.my.shop.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import learn.lhb.my.shop.commons.persistence.BaseEntity;
 
 import java.io.Serializable;
@@ -34,6 +35,7 @@ public class TbUserDomain extends BaseEntity {
         this.phone = phone;
     }
 
+    @JsonIgnore
     public String getPassword() {
         return password;
     }

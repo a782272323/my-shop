@@ -160,13 +160,14 @@ public class TbUserServiceImpl implements TbUserService {
      * @return
      */
     @Override
-    public DataTablePageInfo<TbUserDomain> page(int draw,int start, int length) {
-        int count = tbUserDao.count();
+    public DataTablePageInfo<TbUserDomain> page(int draw,int start, int length,TbUserDomain tbUserDomain) {
+        int count = tbUserDao.count(tbUserDomain);
 
         Map<String,Object> params = new HashMap<>();
 //        params.clear();
         params.put("start",start);
         params.put("length",length);
+        params.put(ConstantUtils.SESSION_USER,tbUserDomain);
 
         DataTablePageInfo<TbUserDomain> pageInfo = new DataTablePageInfo<>();
         pageInfo.setDraw(draw);
@@ -192,8 +193,8 @@ public class TbUserServiceImpl implements TbUserService {
      * @return
      */
     @Override
-    public int count() {
-        return tbUserDao.count();
+    public int count(TbUserDomain tbUserDomain) {
+        return tbUserDao.count(tbUserDomain);
     }
 
     /**

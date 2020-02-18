@@ -140,8 +140,7 @@ public class TbUserController {
      */
     @ResponseBody
     @GetMapping("page")
-    public DataTablePageInfo<TbUserDomain> page(HttpServletRequest request)    {
-
+    public DataTablePageInfo<TbUserDomain> page(HttpServletRequest request,TbUserDomain tbUserDomain)    {
 
         String strDraw = request.getParameter("draw");
         String strStart = request.getParameter("start");
@@ -152,7 +151,7 @@ public class TbUserController {
         int length = strLength == null ? 10 : Integer.parseInt(strLength);
 
         // 封装 Databales 需要的结果
-        DataTablePageInfo<TbUserDomain> pageInfo = tbUserService.page(draw, start, length);
+        DataTablePageInfo<TbUserDomain> pageInfo = tbUserService.page(draw, start, length,tbUserDomain);
 
         return pageInfo;
     }

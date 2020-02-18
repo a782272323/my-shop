@@ -75,13 +75,13 @@ public interface TbUserService {
      * @param length
      * @return
      */
-    DataTablePageInfo<TbUserDomain> page(int draw,int start, int length);
+    DataTablePageInfo<TbUserDomain> page(int draw,int start, int length,TbUserDomain tbUserDomain);
 
     /**
      * 分页查询总笔数
      * @return
      */
-    int count();
+    int count(TbUserDomain tbUserDomain);
 
     /**
      * 查询单个用户信息

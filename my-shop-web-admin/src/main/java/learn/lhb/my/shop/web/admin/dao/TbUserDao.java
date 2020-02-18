@@ -108,7 +108,7 @@ public interface TbUserDao {
      * 查询总条数
      * @return
      */
-    int count();
+    int count(TbUserDomain tbUserDomain);
 
     /**
      * 返回带条件搜索的总条数

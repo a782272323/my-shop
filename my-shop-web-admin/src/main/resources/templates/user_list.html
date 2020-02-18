@@ -64,47 +64,52 @@
                         <div class="box-header with-border">
                             <h3 class="box-title">高级搜索</h3>
                         </div>
-                        <!-- /.box-header -->
-                        <!-- form start -->
-                        <form action="/user/search" method="post" >
-                            <div class="row">
+
+                        <div class="box-body">
+                            <div class="row form-horizontal">
                                 <!-- 邮箱 -->
                                 <!-- TODO bootstrap网格系统做个笔记，理解几个设备对应的关系 -->
                                 <div class="col-xs-12 col-sm-3">
                                     <div class="form-group">
-                                        <label for="Username" class="col-sm-4 control-label">姓名</label>
+                                        <label for="username" class="col-sm-4 control-label">姓名</label>
                                         <div class="col-sm-8">
-                                            <input type="text" id="Username" name="username" th:value="${tbUserDomain.username}" class="form-control pull-right" placeholder="按姓名搜索">
+                                            <input type="text" id="username" name="username"  class="form-control pull-right" placeholder="按姓名搜索">
                                         </div>
                                     </div>
                                 </div>
                                 <!-- 手机 -->
                                 <div class="col-xs-12 col-sm-3">
                                     <div class="form-group">
-                                        <label for="Phone" class="col-sm-4 control-label">手机</label>
+                                        <label for="phone" class="col-sm-4 control-label">手机</label>
 
                                         <div class="col-sm-8">
-                                            <input type="text" id="Phone" name="phone"  th:value="${tbUserDomain.phone}" class="form-control pull-right" placeholder="手机">
+                                            <input type="text" id="phone" name="phone"  class="form-control pull-right" placeholder="手机">
                                         </div>
                                     </div>
                                 </div>
                                 <!-- 姓名 -->
                                 <div class="col-xs-12 col-sm-3">
                                     <div class="form-group">
-                                        <label for="Email" class="col-sm-4 control-label">邮箱</label>
+                                        <label for="email" class="col-sm-4 control-label">邮箱</label>
                                         <div class="col-sm-8">
-                                            <input type="text" id="Email" name="email" th:value="${tbUserDomain.email}" class="form-control pull-right" placeholder="邮箱">
+                                            <input type="text" id="email" name="email"  class="form-control pull-right" placeholder="邮箱">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="box-footer">
-                                <div class="col-xs-12">
-                                    <button type="submit" class="btn btn-info pull-right" >搜索</button>
-                                </div>
+                        </div>
+
+                        <div class="box-footer">
+                            <div class="col-xs-12">
+                                <button type="button" class="btn btn-info pull-right" onclick="search();">搜索</button>
                             </div>
-                            <!-- /.box-footer -->
-                        </form>
+                        </div>
+                        <!-- /.box-footer -->
+
+
+                        <!-- form start -->
+<!--                        <form action="/user/search" method="post" >-->
+<!--                        </form>-->
                     </div>
 
                     <div class="box box-info">
@@ -183,6 +188,7 @@
 
 <script>
 
+    var _dataTable;
     $(function () {
         var _columns = [
                 {
@@ -201,13 +207,34 @@
                     "data": function (row,type,val,meta) {
                         var DetailUrl = "/user/detail/"+row.id;
                         return '<button type="button" id="'+row.id+'" class="btn btn-sm btn-default" style="margin-right: 5px;" onclick="App.showDetail(\''+DetailUrl+'\');"><i class="fa fa-search" > 查看</i></button>&nbsp;&nbsp;&nbsp;' +
-                            '<a href="/user/form?id='+row.id+'" type="button" id="'+row.id+'" class="btn btn-sm btn-info" style="margin-right: 5px;"><i class="fa fa-edit (alias)" > 编辑</i></a>&nbsp;&nbsp;&nbsp;' +
+                            '<a href="/user/form/id='+row.id+'" type="button" id="'+row.id+'" class="btn btn-sm btn-info" style="margin-right: 5px;" ><i class="fa fa-edit (alias)" > 编辑</i></a>&nbsp;&nbsp;&nbsp;' +
                             '<a href="#" type="button" id="'+row.id+'" class="btn btn-sm btn-danger" style="margin-right: 5px;"><i class="fa fa-trash" > 删除</i></a>';
                     }
                 }
             ];
-        App.initDataTables("/user/page",_columns);
+        // dataTable的调用和获取返回值 _dataTable
+        _dateTable = App.initDataTables("/user/page",_columns);
 
+    });
+
+    /**
+     * 封装多条件查询的参数给dataTable传回后台
+     */
+    function search() {
+        // jQuery 取值
+        var username = $("#username").val();
+        var phone = $("#phone").val();
+        var email = $("#email").val();
+        var param = {
+            "username": username,
+            "phone": phone,
+            "email": email,
+        };
+
+        // 动态传参数，用于多条件查询
+        _dateTable.settings()[0].ajax.data = param;
+        _dateTable.ajax.reload();
+    }
 
 
         // $("#dataTable123").DataTable({
@@ -277,12 +304,13 @@
         //         App.init();
         //     },
         // });
-    });
+
 </script>
 
 <!-- TODO thymeleaf遍历循环做个笔记 -->
 <!-- TODO 这里若想搞比如状态 0绿色，1红色，去参考模版的table源码 -->
 <!-- TODO thymeleaf 日期的用法做个笔记 -->
 <!-- TODO 使用了datatables后，之前写的搜索框就失效了，有空完善一下 -->
+<!-- TODO 考虑 搜索框点击搜索后要不要保留历史记录 -->
 </body>
 </html>

@@ -129,7 +129,7 @@ var App = function () {
      */
     var handlerInitDataTables = function (url,columns) {
 
-        $("#dataTable123").DataTable({
+        var _dataTable = $("#dataTable123").DataTable({
             // TODO 这个 jquery 插件的用法，结合这里做一个笔记
             "paging": true, // 左上角选择展示的数据条数
             "stateSave": true, // 开启当前页面处于对应分页的保存状态
@@ -178,6 +178,8 @@ var App = function () {
                 handlerCheckboxAll();
             },
         });
+
+        return _dataTable;
 
     };
 
@@ -234,7 +236,7 @@ var App = function () {
          * @param columns
          */
         initDataTables: function (url,columns) {
-            handlerInitDataTables(url,columns);
+            return handlerInitDataTables(url,columns);
         },
 
         showDetail: function (url) {

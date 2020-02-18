@@ -144,12 +144,35 @@
         SELECT 
         <include refid="tbUserColumns"/>
         FROM
-        tb_user AS a LIMIT ${start},${length}
+        tb_user AS a
+        <where>
+            <if test="tbUserDomain.username != null and tbUserDomain.username != ''">
+                AND a.username LIKE CONCAT ('%',#{tbUserDomain.username},'%')
+            </if>
+            <if test="tbUserDomain.phone != null and tbUserDomain.phone != ''">
+                AND a.phone LIKE CONCAT ('%',#{tbUserDomain.phone},'%')
+            </if>
+            <if test="tbUserDomain.email != null and tbUserDomain.email != ''">
+                AND a.email LIKE CONCAT ('%',#{tbUserDomain.email},'%')
+            </if>
+        </where>
+        LIMIT ${start},${length}
     </select>
 
     <!-- 分页查询返回的总条数 -->
     <select id="count" resultType="java.lang.Integer">
-        SELECT count(*) FROM tb_user
+        SELECT count(*) FROM tb_user AS a
+        <where>
+            <if test="username != null and username != ''">
+                AND a.username LIKE CONCAT ('%',#{username},'%')
+            </if>
+            <if test="phone != null and phone != ''">
+                AND a.phone LIKE CONCAT ('%',#{phone},'%')
+            </if>
+            <if test="email != null and email != ''">
+                AND a.email LIKE CONCAT ('%',#{email},'%')
+            </if>
+        </where>
     </select>
 
     <!-- 用户查询详情 -->
