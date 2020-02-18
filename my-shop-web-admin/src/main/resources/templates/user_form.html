@@ -57,7 +57,7 @@
                         </div>
                         <!-- /.box-header -->
                         <!-- form start th:classappend="${baseResult.status == 200} ? 'has-success' : 'has-error'" -->
-                        <form class="form-horizontal" id="inputForm" th:object="${tbUser}" th:action="@{/user/save}" method="post">
+                        <form class="form-horizontal" id="inputForm" th:object="${tbUserDomain}" th:action="@{/user/save}" method="post">
                             <div class="box-body ">
 
                                 <div class="form-group " > <!-- has-error has-success -->
@@ -66,7 +66,7 @@
                                     </label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputEmail" name="email" placeholder="请输入用户的邮箱地址" th:value="${tbUser.email}">
+                                        <input type="text" class="form-control" id="inputEmail" name="email" placeholder="请输入用户的邮箱地址" th:value="${tbUserDomain.email}">
                                         <!-- 帮助或提示信息 -->
 <!--                                        <th:block th:if="${baseResult != null}">-->
 <!--                                            <span class="help-block" th:if="baseResult.status != 200" th:text="${baseResult.message}"></span>-->
@@ -78,21 +78,21 @@
                                     <label for="inputPassword" class="col-sm-2 control-label">密码</label>
 
                                     <div class="col-sm-10">
-                                        <input type="password" class="form-control" id="inputPassword" name="password" placeholder="请输入登录密码" th:value="${tbUser.password}">
+                                        <input type="password" class="form-control" id="inputPassword" name="password" placeholder="请输入登录密码" th:value="${tbUserDomain.password}">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputUsername" class="col-sm-2 control-label">姓名</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="username" id="inputUsername" placeholder="请输入用户的姓名" th:value="${tbUser.username}">
+                                        <input type="text" class="form-control" name="username" id="inputUsername" placeholder="请输入用户的姓名" th:value="${tbUserDomain.username}">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPhone" class="col-sm-2 control-label">手机</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputPhone" name="phone" placeholder="请输入用户的手机号码" th:value="${tbUser.phone}">
+                                        <input type="text" class="form-control" id="inputPhone" name="phone" placeholder="请输入用户的手机号码" th:value="${tbUserDomain.phone}">
                                     </div>
                                 </div>
                             </div>
@@ -128,3 +128,4 @@
 </html>
 
 <!-- TODO HTML DOM 做个笔记 -->
+<!-- TODO bug 编辑时的数据回显失败 -->

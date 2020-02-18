@@ -152,4 +152,12 @@
         SELECT count(*) FROM tb_user
     </select>
 
+    <!-- 用户查询详情 -->
+    <select id="detail" resultType="TbUserDomain">
+        SELECT <include refid="tbUserColumns" />
+        FROM
+        tb_user AS a
+        WHERE id = #{id}
+    </select>
+
 </mapper>

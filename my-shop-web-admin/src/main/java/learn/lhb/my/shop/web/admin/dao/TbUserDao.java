@@ -116,4 +116,11 @@ public interface TbUserDao {
      * @return
      */
     int someCount(TbUserDomain tbUserDomain);
+
+    /**
+     * 查询单个用户信息
+     * @param id
+     * @return
+     */
+    TbUserDomain detail(Long id);
 }

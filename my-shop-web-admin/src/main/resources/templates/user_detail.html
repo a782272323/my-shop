@@ -1,0 +1,55 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<head>
+    <th:block th:include="includes/header :: header"></th:block>
+    <title>我的商城 | 用户管理</title>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <!-- TODO bug 优化美观，查看后确定无法关闭模态框，而且会影响到全选的样式 -->
+    <div class="box box-body box-info">
+        <table id="dataTable123" class="table table-hover">
+            <tbody>
+            <tr>
+                <td>ID</td>
+                <td><p th:text="${tbUserDomain.id}"></td>
+            </tr>
+            <tr>
+                <td>用户名:</td>
+                <td><p th:text="${tbUserDomain.username}"></p></td>
+            </tr>
+            <tr>
+                <td>手机号码</td>
+                <td><p th:text="${tbUserDomain.phone}"></td>
+            </tr>
+            <tr>
+                <td>邮箱</td>
+                <td><p th:text="${tbUserDomain.email}"></td>
+            </tr>
+            <tr>
+                <td>创建时间</td>
+                <td><p th:text="${#dates.format(tbUserDomain.created,'yyyy-MM-dd HH:mm:ss')}"></p></td>
+            </tr>
+            <tr>
+                <td>更新时间</td>
+                <td><p th:text="${#dates.format(tbUserDomain.updated,'yyyy-MM-dd HH:mm:ss')}"></p></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+    <!-- 引入通用的script -->
+<th:block th:include="includes/footer :: footer"></th:block>
+
+<!-- App -->
+<!--<script>-->
+<!--    $(function () {-->
+<!--        Validate.init();-->
+<!--    })-->
+<!--</script>-->
+
+</body>
+</html>
+<!-- TODO bug 查看页面取值失败 -->

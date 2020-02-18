@@ -197,12 +197,24 @@ public class TbUserServiceImpl implements TbUserService {
     }
 
     /**
+     * 查询单个用户信息
+     * @param id
+     * @return
+     */
+    @Override
+    public TbUserDomain detail(Long id) {
+        TbUserDomain tbUserDomain = tbUserDao.detail(id);
+        return tbUserDomain;
+    }
+
+    /**
      * 用户信息的有效性验证
      * @param tbUserDomain
      */
     private BaseResult checkTbUser(TbUserDomain tbUserDomain) {
         // TODO 有空把 StringUtils 的用法和源码 的笔记完善下 使用 common.lang3 下面的 StringUtils
 
+        // TODO 这里也有bug，这里的重复验证在编辑时会失效
         // 默认用户信息是有效的
         BaseResult baseResult = BaseResult.ok();
 
@@ -217,9 +229,9 @@ public class TbUserServiceImpl implements TbUserService {
             baseResult = BaseResult.error("邮箱格式不正确，请重新输入");
         }
         // 验证邮箱是否重复
-        else if(findEmail(tbUserDomain.getEmail()))   {
-            baseResult = BaseResult.error("邮箱重复，请重新输入");
-        }
+//        else if(findEmail(tbUserDomain.getEmail()))   {
+//            baseResult = BaseResult.error("邮箱重复，请重新输入");
+//        }
         // 密码 password 非空验证
         else if(StringUtils.isBlank(tbUserDomain.getPassword())) {
             baseResult = BaseResult.error(500,"密码不能为空,请重新输入");
@@ -229,9 +241,9 @@ public class TbUserServiceImpl implements TbUserService {
             baseResult = BaseResult.error(500,"姓名不能为空,请重新输入");
         }
         // 用户姓名重复验证
-        else if (findUsername(tbUserDomain.getUsername())) {
-            baseResult = BaseResult.error("用户名重复，请重新输入");
-        }
+//        else if (findUsername(tbUserDomain.getUsername())) {
+//            baseResult = BaseResult.error("用户名重复，请重新输入");
+//        }
         // 手机号 phone 非空验证
         else if(StringUtils.isBlank(tbUserDomain.getPhone())) {
             baseResult = BaseResult.error(500,"手机号不能为空,请重新输入");
@@ -241,9 +253,9 @@ public class TbUserServiceImpl implements TbUserService {
             baseResult = BaseResult.error("手机格式不正确，请重新输入");
         }
         // 手机重复验证
-        else if (findPhone(tbUserDomain.getPhone()))  {
-            baseResult = BaseResult.error("手机号码重复，请重新输入");
-        }
+//        else if (findPhone(tbUserDomain.getPhone()))  {
+//            baseResult = BaseResult.error("手机号码重复，请重新输入");
+//        }
         return baseResult;
     }
 

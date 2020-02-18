@@ -62,14 +62,7 @@ public class TbUserController {
      * @return
      */
     @GetMapping("list")
-    public String list(Model model)    {
-
-        List<TbUserDomain> tbUserDomains = tbUserService.selectAll();
-        model.addAttribute(ConstantUtils.SESSION_USERS,tbUserDomains);
-        // TODO for 和 foreach做个笔记,list里面的遍历也做个笔记
-//        for (int i=0;i<tbUserDomains.size();i++)  {
-//            logger.debug("id = {}",tbUserDomains.get(i).getId());
-//        }
+    public String list()    {
         return "user_list";
     }
 
@@ -93,7 +86,7 @@ public class TbUserController {
      * @return
      */
     @PostMapping("save")
-    public String save (@ModelAttribute(value = "tbUser") TbUserDomain tbUserDomain, Model model, RedirectAttributes redirectAttributes)  {
+    public String save (TbUserDomain tbUserDomain, Model model, RedirectAttributes redirectAttributes)  {
         BaseResult baseResult = tbUserService.save(tbUserDomain);
 
         // 保存成功
@@ -163,5 +156,18 @@ public class TbUserController {
 
         return pageInfo;
     }
+
+    /**
+     * 显示用户详情
+     * @param id
+     * @return
+     */
+    @GetMapping("detail/{id}")
+    public String detail(@PathVariable(value = "id") Long id,Model model)  {
+        TbUserDomain tbUserDomain = tbUserService.detail(id);
+        model.addAttribute(ConstantUtils.SESSION_USER,tbUserDomain);
+        return "user_detail";
+    }
 }
 // TODO 把jQuery Validation的用法做个笔记，千峰(最好把文档里有关jQuery的用法都移植到我的笔记里面来)
+// TODO bug 编辑功能没有实现

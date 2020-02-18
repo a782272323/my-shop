@@ -181,6 +181,26 @@ var App = function () {
 
     };
 
+    /**
+     * 查看用户详情
+     * @param url
+     */
+    var handlerShowDetail = function (url) {
+        $.ajax({
+            url: url,
+            type: "get",
+            dataType: "html",
+            success: function (data) {
+                $("#modal-detail-user0").html(data);
+                $("#modal-detail").modal("show");
+            }
+        });
+        $("#btnModalDetailOk").bind("clikc",function () {
+            console.log("hello");
+            $("#modal-detail").modal("hide");
+        });
+    };
+
 
     /**
      * 把上面的方法暴露出来
@@ -216,6 +236,11 @@ var App = function () {
         initDataTables: function (url,columns) {
             handlerInitDataTables(url,columns);
         },
+
+        showDetail: function (url) {
+            handlerShowDetail(url);
+
+        }
     }
 
 }();

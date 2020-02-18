@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:HH="http://www.w3.org/1999/xhtml">
 <head>
     <th:block th:include="includes/header :: header"></th:block>
-    <title>我的商城 | 用户列表</title>
+    <title>我的商城 | 用户管理</title>
     <!-- DataTables -->
     <link rel="stylesheet" href="/static/assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 </head>
@@ -182,9 +182,8 @@
 
 
 <script>
+
     $(function () {
-
-
         var _columns = [
                 {
                     // 用函数返回 全选框
@@ -200,13 +199,16 @@
                 { "data": "updated" },
                 {   // 查看，编辑，删除按钮
                     "data": function (row,type,val,meta) {
-                        return '<a href="#" type="button" id="'+row.id+'" class="btn btn-sm btn-default" style="margin-right: 5px;"><i class="fa fa-search" > 查看</i></a>&nbsp;&nbsp;&nbsp;' +
+                        var DetailUrl = "/user/detail/"+row.id;
+                        return '<button type="button" id="'+row.id+'" class="btn btn-sm btn-default" style="margin-right: 5px;" onclick="App.showDetail(\''+DetailUrl+'\');"><i class="fa fa-search" > 查看</i></button>&nbsp;&nbsp;&nbsp;' +
                             '<a href="/user/form?id='+row.id+'" type="button" id="'+row.id+'" class="btn btn-sm btn-info" style="margin-right: 5px;"><i class="fa fa-edit (alias)" > 编辑</i></a>&nbsp;&nbsp;&nbsp;' +
                             '<a href="#" type="button" id="'+row.id+'" class="btn btn-sm btn-danger" style="margin-right: 5px;"><i class="fa fa-trash" > 删除</i></a>';
                     }
                 }
             ];
         App.initDataTables("/user/page",_columns);
+
+
 
         // $("#dataTable123").DataTable({
         //     // TODO 这个 jquery 插件的用法，结合这里做一个笔记

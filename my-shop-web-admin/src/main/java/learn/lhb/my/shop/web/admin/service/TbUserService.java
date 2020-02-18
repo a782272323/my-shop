@@ -82,4 +82,11 @@ public interface TbUserService {
      * @return
      */
     int count();
+
+    /**
+     * 查询单个用户信息
+     * @param id
+     * @return
+     */
+    TbUserDomain detail(Long id);
 }

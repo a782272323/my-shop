@@ -90,4 +90,16 @@ public class TbUserServiceTest {
         }
     }
 
+    @Test
+    public void detailTest()    {
+        Long id = Long.valueOf(17);
+        TbUserDomain tbUserDomain = tbUserService.detail(id);
+        System.out.println(tbUserDomain.getId());
+        System.out.println(tbUserDomain.getPhone());
+        System.out.println(tbUserDomain.getUsername());
+        System.out.println(tbUserDomain.getEmail());
+        System.out.println(tbUserDomain.getCreated());
+        System.out.println(tbUserDomain.getUpdated());
+    }
+
 }

@@ -4,6 +4,29 @@
     <meta charset="UTF-8">
 </head>
 <body th:fragment="footer">
+<!-- 详情信息模态框 -->
+<div class="modal fade" id="modal-detail"><!-- fade 淡入淡出效果 -->
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">查看详情</h4>
+            </div>
+            <div class="modal-body">
+                <!-- TbUserDomain -->
+                <p id="modal-detail-user0" th:if="${tbUserDomain != null}"></p>
+                <p id="model-detail-user1" th:if="@{tbUserDomain == null}"></p>
+            </div>
+            <div class="modal-footer">
+<!--                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>-->
+                <button id="btnModalDetailOk" type="button" class="btn btn-info" >确认</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
 
 
 <!-- jQuery 3 -->
