@@ -6,4 +6,3 @@
 *.sql linguist-language=java
 *.xml linguist-language=java
 *.txt linguist-language=java
-; *.java linguist-language=java

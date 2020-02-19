@@ -31,6 +31,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         if (tbUserDomain == null)   {
 //            tbUserDomain.setEmail("x");
             response.sendRedirect("/login");
+
         }
 
         // return 为false下面的方法就进不去了
