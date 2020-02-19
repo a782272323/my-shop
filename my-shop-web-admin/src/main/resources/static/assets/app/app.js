@@ -62,7 +62,7 @@ var App = function () {
             }
         });
 
-        // 如果没有选，则弹出框警告
+        // 判断用户是否选择了数据项
         if (_idArray.length === 0) {
             $("#modal-message-user0").html("您还没有选择任何要删除的数据，请至少选择一项");
             $("#model-message-user1").html("改操作属于用户管理的模态框操作");
@@ -73,7 +73,7 @@ var App = function () {
         // 批量删除按钮弹出模态框
         $("#modal-default").modal("show");
 
-        // 用户选择了数据项，调用删除方法
+        // 用户选择了数据项，则调用删除方法
         $("#btnModalOK").bind("click", function () {
             handlerDeleteData(url);
         });
@@ -95,10 +95,10 @@ var App = function () {
                    "data": {"ids" : _idArray.toString()},
                    "dataType": "JSON",
                    "success": function (data) {
-                       // 请求成功后，需要弹出模态框提示，先解绑模态框
+                       // 请求成功后，无论成功失败需要弹出模态框提示，所以这里需要先解绑模态框
                        $("#btnModalOK").unbind("click");
 
-                       //请求成功
+                       // 请求成功,刷新页面
                        if (data.status === 200) {
                            // 刷新页面
                            $("#btnModalOK").bind("click", function () {
@@ -188,6 +188,7 @@ var App = function () {
      * @param url
      */
     var handlerShowDetail = function (url) {
+        // 通过 Ajax 请求 html 的方式，将页面装载进模态框中
         $.ajax({
             url: url,
             type: "get",
@@ -217,9 +218,9 @@ var App = function () {
         },
 
 
-        getCheckbox: function() {
-            return _checkbox;
-        },
+        // getCheckbox: function() {
+        //     return _checkbox;
+        // },
 
         /**
          * 批量删除
@@ -239,6 +240,10 @@ var App = function () {
             return handlerInitDataTables(url,columns);
         },
 
+        /**
+         * 显示用户信息详情
+         * @param url
+         */
         showDetail: function (url) {
             handlerShowDetail(url);
 

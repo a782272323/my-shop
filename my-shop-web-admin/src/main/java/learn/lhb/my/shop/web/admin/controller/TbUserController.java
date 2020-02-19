@@ -31,6 +31,7 @@ import java.util.Map;
 @RequestMapping(value = "user")
 public class TbUserController {
 
+    // 日志
     public static final Logger logger = LoggerFactory.getLogger(TbUserController.class);
 
     @Autowired
@@ -102,18 +103,6 @@ public class TbUserController {
     }
 
     /**
-     * 搜索
-     * @param tbUserDomain
-     * @return
-     */
-    @PostMapping("search")
-    public String search(TbUserDomain tbUserDomain,Model model)    {
-        List<TbUserDomain> tbUserDomains = tbUserService.search(tbUserDomain);
-        model.addAttribute(ConstantUtils.SESSION_USERS,tbUserDomains);
-        return "user_list";
-    }
-
-    /**
      * 删除用户信息
      * @param ids
      * @return
@@ -170,3 +159,4 @@ public class TbUserController {
 }
 // TODO 把jQuery Validation的用法做个笔记，千峰(最好把文档里有关jQuery的用法都移植到我的笔记里面来)
 // TODO bug 编辑功能没有实现
+// TODO 单个删除功能没有实现

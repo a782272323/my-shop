@@ -17,19 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 //@RequestMapping(value = "v1.0")   TODO 加了访问 静态资源失效，bug未解决
 public class MainController {
 
-//    @GetMapping(value = "main")
-//    public String main(
-//            @RequestParam(value = "tbUserDomain")TbUserDomain tbUserDomain,
-//            Model model
-//            )    {
-//        if (tbUserDomain == null)   {
-//            model.addAttribute(ConstantUtils.WEB_MESSAGE,"获取邮箱失败");
-//        }   {
-//            model.addAttribute(ConstantUtils.SESSION_USER,tbUserDomain);
-//        }
-//        return "main";
-//    }
-
     @GetMapping(value = "main")
     public String main()    {
         return "main";

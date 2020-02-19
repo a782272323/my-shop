@@ -6,6 +6,7 @@ import learn.lhb.my.shop.commons.persistence.BaseEntity;
 import java.io.Serializable;
 import java.util.Date;
 
+// 完善阿里巴巴代码检查规范的笔记
 /**
  * 用户表（只管理员一类，不是只会员和消费者）
  * @author 梁鸿斌
@@ -13,11 +14,14 @@ import java.util.Date;
  * @time 22:56
  */
 public class TbUserDomain extends BaseEntity {
-
-    private String username;//用户名
-    private String phone;//注册手机号
-    private String password;//密码，加密存储
-    private String email;//注册邮箱
+    //用户名
+    private String username;
+    //注册手机号
+    private String phone;
+    //密码，加密存储
+    private String password;
+    //注册邮箱
+    private String email;
 
     public String getUsername() {
         return username;

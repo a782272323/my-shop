@@ -14,17 +14,38 @@ import java.util.List;
  */
 public interface TbUserService {
 
+    /**
+     * 查询全部
+     * @return
+     */
     public List<TbUserDomain> selectAll();
 
+    /**
+     * 保存用户信息
+     * @param tbUserDomain
+     * @return
+     */
     BaseResult save(TbUserDomain tbUserDomain);
 
+    /**
+     * 删除用户信息
+     * @param id
+     */
     void delete(Long id);
 
+    /**
+     * 根据id获取用户信息
+     * @param id
+     * @return
+     */
     TbUserDomain getById(Long id);
 
+    /**
+     * 更新用户信息
+     * @param tbUserDomain
+     */
     void update(TbUserDomain tbUserDomain);
 
-    List<TbUserDomain> selectByUsername(String username);
 
     /**
      * 用户登录
@@ -33,13 +54,6 @@ public interface TbUserService {
      * @return
      */
     TbUserDomain login(String email,String password);
-
-    /**
-     * 搜索功能
-     * @param tbUserDomain
-     * @return
-     */
-    List<TbUserDomain> search(TbUserDomain tbUserDomain);
 
     /**
      * 批量删除

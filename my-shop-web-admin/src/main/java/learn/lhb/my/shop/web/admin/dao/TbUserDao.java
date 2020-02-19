@@ -43,13 +43,6 @@ public interface TbUserDao {
     void update(TbUserDomain tbUserDomain);
 
     /**
-     * 根据用户名进行模糊匹配
-     * @param username
-     * @return
-     */
-    List<TbUserDomain> selectByUsername(String username);
-
-    /**
      * 根据邮箱查询用户信息
      * @param email
      * @return
@@ -63,12 +56,12 @@ public interface TbUserDao {
      */
     TbUserDomain getById(Long id);
 
-    /**
-     * 精确搜索（高级搜索)
-     * @param tbUserDomain
-     * @return
-     */
-    List<TbUserDomain> search(TbUserDomain tbUserDomain);
+//    /**
+//     * 精确搜索（高级搜索)
+//     * @param tbUserDomain
+//     * @return
+//     */
+//    List<TbUserDomain> search(TbUserDomain tbUserDomain);
 
     /**
      * 批量删除

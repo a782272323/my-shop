@@ -30,17 +30,16 @@ import java.util.UUID;
 //@RequestMapping(value = "v1.0")   TODO 加了访问 静态资源失效，bug未解决
 public class LoginController {
 
+    // 日志
     public static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
     @Autowired
     private TbUserService tbUserService;
 
-
     @GetMapping("test1")
     public String test1()   {
         return "test1";
     }
-
 
     /**
      * 跳转登录页
@@ -91,10 +90,6 @@ public class LoginController {
     // TODO 做完这个项目后，把maven笔记完善一下
     }
 
-//    @ModelAttribute
-//    public TbUserDomain tbUserDomain()  {
-//
-//    }
 
     @GetMapping(value = "logout")
     public String logout(HttpServletRequest request)  {

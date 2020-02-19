@@ -27,16 +27,26 @@ import java.util.Map;
 @Service
 public class TbUserServiceImpl implements TbUserService {
 
+    // 日志
     public static final Logger logger = LoggerFactory.getLogger(TbUserServiceImpl.class);
 
     @Autowired
     private TbUserDao tbUserDao;
 
+    /**
+     * 查询全部用户信息
+     * @return
+     */
     @Override
     public List<TbUserDomain> selectAll() {
         return tbUserDao.selectAll();
     }
 
+    /**
+     * 保存用户信息
+     * @param tbUserDomain
+     * @return
+     */
     @Override
     public BaseResult save(TbUserDomain tbUserDomain) {
         BaseResult baseResult = checkTbUser(tbUserDomain);
@@ -63,26 +73,40 @@ public class TbUserServiceImpl implements TbUserService {
         return baseResult;
     }
 
+    /**
+     * 删除用户信息
+     * @param id
+     */
     @Override
     public void delete(Long id) {
         tbUserDao.delete(id);
     }
 
+    /**
+     * 根据用户id获取用户信息
+     * @param id
+     * @return
+     */
     @Override
     public TbUserDomain getById(Long id) {
         return null;
     }
 
+    /**
+     * 更新用户信息
+     * @param tbUserDomain
+     */
     @Override
     public void update(TbUserDomain tbUserDomain) {
         tbUserDao.update(tbUserDomain);
     }
 
-    @Override
-    public List<TbUserDomain> selectByUsername(String username) {
-        return null;
-    }
-
+    /**
+     * 登录业务逻辑
+     * @param email
+     * @param password
+     * @return
+     */
     @Override
     public TbUserDomain login(String email, String password) {
 
@@ -176,16 +200,6 @@ public class TbUserServiceImpl implements TbUserService {
         pageInfo.setData(tbUserDao.page(params));
 
         return pageInfo;
-    }
-
-    /**
-     * 搜索功能
-     * @param tbUserDomain
-     * @return
-     */
-    @Override
-    public List<TbUserDomain> search(TbUserDomain tbUserDomain) {
-        return tbUserDao.search(tbUserDomain);
     }
 
     /**
